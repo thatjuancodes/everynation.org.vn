@@ -1,0 +1,15 @@
+---
+import type { MissionStatsContent } from '../../content/home';
+
+interface Props {
+  content: MissionStatsContent;
+}
+
+const { content } = Astro.props;
+---
+
+<section id="mission" class="bg-slate-50 px-4 pb-20 pt-6 lg:px-0">
+  <div class="layout-shell">
+    <div class="h-[420px] w-full rounded-[18px] bg-slate-200" aria-hidden="true"></div>
+  </div>
+</section>

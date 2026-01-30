@@ -1,0 +1,87 @@
+---
+import type { WeeklyGatheringsContent } from '../../content/home';
+
+interface Props {
+  content: WeeklyGatheringsContent;
+}
+
+const { content } = Astro.props;
+
+const words = content.title.split(/\s+/).filter(Boolean);
+const titleLines = [
+  words.slice(0, 2).join(' '),
+  words.slice(2).join(' '),
+].filter(Boolean);
+---
+
+<section id="gatherings" class="relative -mt-10 bg-[#f2f2f2] px-4 pb-16 pt-12 lg:px-0">
+  <div class="layout-shell">
+    <div class="relative grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+      <div class="relative order-1 z-20 self-center lg:order-1 lg:-mr-16">
+        <div class="overflow-hidden rounded-[14px] shadow-[0_22px_50px_rgba(0,0,0,0.16)] lg:rounded-[16px] h-[470px] sm:h-[510px] lg:h-[570px] max-w-[520px]">
+          <img
+            src="/images/figma-rect-22-896.png"
+            alt="Congregation gathered during service"
+            class="h-full w-full object-cover"
+            loading="lazy"
+          />
+        </div>
+      </div>
+      <div class="relative order-2 lg:order-2 z-10 lg:-ml-[120px]">
+        <div
+          class="relative overflow-hidden rounded-[23px] border border-slate-200/80 bg-[#f6f6f6] shadow-[0_18px_42px_rgba(0,0,0,0.14)] lg:pl-[100px] min-h-[460px] sm:min-h-[500px] lg:min-h-[560px]"
+        >
+          <div class="relative flex h-full flex-col px-6 py-6 sm:px-8 sm:py-8">
+            <div>
+              <h2
+                class="text-center text-[30px] font-bold uppercase leading-[40px] tracking-[-1px] text-[#2964AF] sm:text-[36px] sm:leading-[46px] lg:text-[40px] lg:leading-[48px] lg:tracking-[-1.6px]"
+                style="font-family: 'Inter', 'Inter', sans-serif;"
+              >
+                {(titleLines.length ? titleLines : [content.title]).map((line) => (
+                  <span class="block">{line}</span>
+                ))}
+              </h2>
+              <div class="mt-5 flex justify-center">
+                <ul class="w-full max-w-[520px] space-y-3 rounded-[12px] border border-[#d9d9d9] bg-white px-4 py-4 text-sm text-slate-900 sm:text-base">
+                  {content.services.map((service) => (
+                    <li class="flex items-start gap-3">
+                      <span class="mt-0.5 grid h-6 w-6 place-items-center rounded-full border border-slate-300 bg-white text-[#1b4f9b] font-semibold">
+                        ⏰
+                      </span>
+                      <div class="flex flex-col leading-tight">
+                        <span class="font-semibold">{service.label}</span>
+                        <span class="text-slate-700">{service.time}</span>
+                      </div>
+                    </li>
+                  ))}
+                  <li class="flex items-start gap-3">
+                    <span class="mt-0.5 grid h-6 w-6 place-items-center rounded-full border border-slate-300 bg-white text-[#1b4f9b] font-semibold">
+                      ⓘ
+                    </span>
+                    <span class="text-slate-800">{content.location}</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="mt-6 overflow-hidden rounded-[14px] border border-slate-200 shadow-[0_12px_26px_rgba(0,0,0,0.12)] h-[160px] sm:h-[180px] lg:h-[200px]">
+                <img
+                  src="/images/figma-15-584.png"
+                  alt="Map showing church location"
+                  class="h-full w-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+            <div class="mt-auto flex justify-center pt-6">
+              <a
+                href="#connect"
+                class="inline-flex min-w-[200px] items-center justify-center rounded-[6px] bg-[#1b4f9b] px-5 py-3 text-sm font-semibold text-white shadow-[0_12px_26px_rgba(27,79,155,0.22)] transition hover:-translate-y-0.5 hover:bg-[#144388] !text-white"
+              >
+                {content.ctaLabel}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

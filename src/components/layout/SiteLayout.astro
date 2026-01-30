@@ -1,0 +1,61 @@
+---
+import Footer from './Footer.astro';
+import Header from './Header.astro';
+import '../../styles/global.css';
+import type { NavLink } from '../../content/navigation';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  ogImage?: string;
+  navLinks: NavLink[];
+  footerLinks: NavLink[];
+  socials: { label: string; href: string; icon: 'facebook' | 'youtube' }[];
+  languages: { code: string; label: string }[];
+  logoHref?: string;
+  cta?: { label: string; href: string } | null;
+  activeHref?: string;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogImage = '/images/hero-crowd.jpg',
+  navLinks,
+  footerLinks,
+  socials,
+  languages,
+  logoHref = '/',
+  cta = null,
+  activeHref = '/',
+} = Astro.props;
+---
+
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <title>{title}</title>
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+  </head>
+  <body class="bg-slate-50 text-slate-900">
+    <Header links={navLinks} languages={languages} logoHref={logoHref} cta={cta} activeHref={activeHref} />
+    <main>
+      <slot />
+    </main>
+    <Footer links={footerLinks} socials={socials} />
+  </body>
+</html>

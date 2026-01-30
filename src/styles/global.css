@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap");
+@import "tailwindcss";
+
+:root {
+  font-family: "Montserrat", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: #1b1b1b;
+  background-color: #f2f2f2;
+}
+
+body {
+  @apply text-slate-900 bg-slate-50;
+}
+
+a {
+  @apply text-inherit no-underline;
+}
+
+button,
+a.button {
+  min-width: 243px;
+  padding: 12px 18px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+a:focus-visible,
+button:focus-visible {
+  @apply outline outline-2 outline-offset-2 outline-sky-500;
+}
+
+.section-card {
+  @apply rounded-3xl border border-slate-100 bg-white shadow-lg shadow-slate-200/70;
+}
+
+.muted-grid {
+  background-image: linear-gradient(rgba(33, 48, 92, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(33, 48, 92, 0.08) 1px, transparent 1px);
+  background-size: 60px 60px;
+  background-color: #f9f5ec;
+}
+
+.soft-paper {
+  background-image: radial-gradient(circle at 20% 20%, rgba(12, 74, 153, 0.08), transparent 32%),
+    radial-gradient(circle at 80% 40%, rgba(59, 130, 246, 0.08), transparent 28%),
+    radial-gradient(circle at 40% 80%, rgba(15, 118, 110, 0.08), transparent 26%);
+}
+
+@keyframes gleam-swipe {
+  0% {
+    transform: translateX(-260%) rotate(25deg);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.65;
+  }
+  50% {
+    transform: translateX(260%) rotate(25deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(260%) rotate(25deg);
+    opacity: 0;
+  }
+}
+
+.gleam-btn {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.gleam-btn::after {
+  content: "";
+  position: absolute;
+  inset: -260% auto auto -200%;
+  width: 140%;
+  height: 520%;
+  background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.7) 38%, rgba(255, 255, 255, 0.95) 50%, rgba(255, 255, 255, 0.7) 62%, transparent 100%);
+  mix-blend-mode: screen;
+  opacity: 0;
+  animation: gleam-swipe 3.5s ease-in-out infinite;
+  animation-delay: 1.2s;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.gleam-btn:hover::after {
+  animation-duration: 2.5s;
+}
+
+.layout-shell {
+  @apply mx-auto w-full max-w-6xl px-4 lg:px-0;
+}
+
+.ripple-overlay {
+  background-size: 180% 180%;
+  animation: rippleShift 14s ease-in-out infinite alternate;
+}
+
+@keyframes rippleShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 50% 48%;
+  }
+  100% {
+    background-position: 100% 52%;
+  }
+}
