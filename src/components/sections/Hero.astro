@@ -11,7 +11,7 @@ const lines = content.headline.split(/\r?\n/).map((line) => line.trim()).filter(
 
 <section
   id="hero"
-  class="relative flex min-h-screen items-center overflow-hidden bg-sky-900 text-white"
+  class="relative flex min-h-screen items-start overflow-hidden bg-sky-900 text-white pt-28 lg:pt-36"
   aria-labelledby="hero-heading"
 >
   <div class="absolute inset-0 overflow-hidden" data-hero-bg>
@@ -23,7 +23,7 @@ const lines = content.headline.split(/\r?\n/).map((line) => line.trim()).filter(
     />
     <div class="absolute inset-0" style="background: linear-gradient(280deg, rgba(189, 225, 255, 0.80) 1.53%, rgba(2, 96, 219, 0.80) 98.47%);" />
   </div>
-  <div class="layout-shell relative flex flex-col items-start gap-8 py-20 text-left sm:py-24 lg:py-28">
+  <div class="layout-shell relative flex flex-col items-start gap-5 pb-20 text-left">
     <p
       class="text-[26px] font-semibold leading-[34px] text-white sm:text-[30px] sm:leading-[38px]"
       style="letter-spacing:-0.64px"
@@ -32,7 +32,7 @@ const lines = content.headline.split(/\r?\n/).map((line) => line.trim()).filter(
     </p>
     <h1
       id="hero-heading"
-      class="max-w-4xl text-[42px] font-extrabold uppercase leading-[1.05] tracking-tight text-white sm:text-[58px] sm:leading-[1.05] lg:text-[84px] lg:leading-[92px] lg:tracking-[-3.84px]"
+      class="max-w-4xl text-[42px] font-extrabold uppercase leading-[1.05] tracking-tight text-white sm:text-[58px] sm:leading-[1.05] lg:text-[90px] lg:leading-[98px] lg:tracking-[-3.84px]"
       style="letter-spacing:-3.84px"
     >
       {lines.map((line) => (
