@@ -10,8 +10,8 @@ export type LanguageOption = {
 };
 
 export const navLinks: NavLink[] = [
-  { label: 'Home', href: '#hero' },
-  { label: 'About us', href: '#about', sublabel: 'Who we are' },
+  { label: 'Home', href: '/' },
+  { label: 'About us', href: '/about', sublabel: 'Who we are' },
   { label: 'Get Connected', href: '#gatherings', sublabel: 'Join a service' },
   { label: 'Giving', href: '#mission' },
   { label: 'Sermon', href: '#sermons' },

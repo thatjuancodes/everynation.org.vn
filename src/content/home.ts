@@ -60,11 +60,11 @@ export const missionStats = {
 };
 
 export const footerLinks = [
-  { label: 'Home', href: '#hero' },
-  { label: 'Our Mission', href: '#about' },
-  { label: 'Foundational Values', href: '#mission' },
-  { label: 'Statement Of Faith', href: '#mission' },
-  { label: 'Giving', href: '#mission' },
+  { label: 'Home', href: '/' },
+  { label: 'About Us', href: '/about' },
+  { label: 'Our Mission', href: '/about' },
+  { label: 'Foundational Values', href: '/about' },
+  { label: 'Statement Of Faith', href: '/about' },
   { label: 'Sermon', href: '#sermons' },
 ];
 

@@ -27,27 +27,24 @@ const { content } = Astro.props;
       >
         <div class="space-y-4">
           <h2
-            class="text-[32px] font-bold uppercase leading-tight tracking-[-1px] text-[#2964AF] sm:text-[42px] lg:text-[48px]"
+            class="text-[32px] font-bold uppercase leading-[40px] tracking-[-1.92px] text-[#2964AF] sm:text-[42px] lg:text-[48px] lg:leading-[56px]"
             style="font-family: 'Inter', 'Inter', sans-serif;"
           >
             {content.title}
           </h2>
           <p
-            class="whitespace-pre-line text-[14px] font-medium leading-relaxed text-[#555] sm:text-[15px] lg:text-[15px]"
+            class="whitespace-pre-line text-[16px] font-medium leading-[19px] text-[#555]"
           >
             {content.body}
           </p>
         </div>
 
         <a
-          href="#mission"
-          class="inline-flex w-fit items-center gap-1 text-[15px] font-bold !text-[#0055AA] transition hover:gap-2 hover:!text-[#003f82]"
+          href="/about"
+          class="inline-flex w-fit items-center gap-1 text-[16px] font-semibold leading-[19px] !text-[#0055AA] !underline decoration-solid decoration-auto underline-offset-auto transition hover:gap-2"
           style="font-family: 'Inter', sans-serif;"
         >
-          <span
-            class="underline decoration-2 underline-offset-4 !decoration-[#0055AA]"
-            >{content.ctaLabel}</span
-          >
+          {content.ctaLabel}
           <span>&gt;</span>
         </a>
       </div>

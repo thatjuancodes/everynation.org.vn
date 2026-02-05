@@ -1,0 +1,30 @@
+---
+interface Props {
+    content: {
+        title: string;
+        image: string;
+    };
+}
+const { content } = Astro.props;
+---
+
+<section
+    class="relative mt-5 h-[200px] w-full overflow-hidden sm:h-[200px] lg:h-[200px]"
+>
+    <div class="absolute inset-0">
+        <img
+            src={content.image}
+            alt="About Every Nation Vietnam"
+            class="h-full w-full object-cover"
+        />
+        <div class="absolute inset-0" style="background: linear-gradient(280deg, 1.53%, rgba(2, 96, 219, 0.80) 98.47%);"></div>
+    </div>
+    <div class="layout-shell relative grid h-full place-items-center">
+        <h1
+            class="text-center text-[38px] font-bold text-white sm:text-[46px] lg:text-[50px]"
+            style="font-family: 'Inter', sans-serif;"
+        >
+            {content.title}
+        </h1>
+    </div>
+</section>
