@@ -1,0 +1,61 @@
+---
+import SiteLayout from "../../components/layout/SiteLayout.astro";
+import DetailHero from "../../components/sections/about/DetailHero.astro";
+import MissionDetail from "../../components/sections/about/MissionDetail.astro";
+import ValuesDetail from "../../components/sections/about/ValuesDetail.astro";
+import FaithDetail from "../../components/sections/about/FaithDetail.astro";
+
+import { missionContent } from "../../content/mission";
+import { valuesContent } from "../../content/values";
+import { faithContent } from "../../content/faith";
+import { siteMeta, footerLinks } from "../../content/home";
+import {
+    navLinks,
+    socialLinks,
+    languageOptions,
+} from "../../content/navigation";
+
+export function getStaticPaths() {
+    return [
+        { params: { id: "mission" } },
+        { params: { id: "values" } },
+        { params: { id: "faith" } },
+    ];
+}
+
+const { id } = Astro.params;
+
+let content;
+let Component;
+
+// Select content and component based on ID
+if (id === "mission") {
+    content = missionContent;
+    Component = MissionDetail;
+} else if (id === "values") {
+    content = valuesContent;
+    Component = ValuesDetail;
+} else if (id === "faith") {
+    content = faithContent;
+    Component = FaithDetail;
+} else {
+    // Fallback or 404 handling (though getStaticPaths prevents invalid IDs in static build)
+    return Astro.redirect("/404");
+}
+---
+
+<SiteLayout
+    title={`${content?.hero?.title} | ${siteMeta.title}`}
+    description={siteMeta.description}
+    navLinks={navLinks}
+    footerLinks={footerLinks}
+    socials={socialLinks}
+    languages={languageOptions}
+    activeHref={`/about/${id}`}
+>
+    <!-- Shared Hero Section -->
+    <DetailHero content={content?.hero} />
+
+    <!-- Detail Component -->
+    <Component content={content} />
+</SiteLayout>

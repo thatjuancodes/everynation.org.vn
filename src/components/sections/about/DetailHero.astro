@@ -3,6 +3,7 @@ interface Props {
     content: {
         title: string;
         image: string;
+        badge?: string;
     };
 }
 const { content } = Astro.props;
@@ -13,8 +14,8 @@ const { content } = Astro.props;
 >
     <div class="absolute inset-0">
         <img
-            src={content.image}
-            alt="About Every Nation Vietnam"
+            src={content?.image}
+            alt={content?.title}
             class="h-full w-full object-cover"
         />
         <div
@@ -24,11 +25,13 @@ const { content } = Astro.props;
         </div>
     </div>
     <div class="layout-shell relative grid h-full place-items-center">
-        <h1
-            class="text-center text-[38px] font-bold text-white sm:text-[46px] lg:text-[50px]"
-            style="font-family: 'Inter', sans-serif;"
-        >
-            {content.title}
-        </h1>
+        <div class="text-center">
+            <h1
+                class="text-center text-[38px] font-bold text-white sm:text-[46px] lg:text-[50px]"
+                style="font-family: 'Inter', sans-serif;"
+            >
+                {content?.title}
+            </h1>
+        </div>
     </div>
 </section>

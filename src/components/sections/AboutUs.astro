@@ -41,11 +41,10 @@ const { content } = Astro.props;
 
         <a
           href="/about"
-          class="inline-flex w-fit items-center gap-1 text-[16px] font-semibold leading-[19px] !text-[#0055AA] !underline decoration-solid decoration-auto underline-offset-auto transition hover:gap-2"
+          class="w-fit text-[16px] font-semibold leading-[19px] !text-[#0055AA] !underline decoration-solid decoration-auto underline-offset-auto"
           style="font-family: 'Inter', sans-serif;"
         >
-          {content.ctaLabel}
-          <span>&gt;</span>
+          {content.ctaLabel}<span>&gt;</span>
         </a>
       </div>
       <div class="relative z-20 flex items-center justify-end">
