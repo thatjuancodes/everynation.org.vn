@@ -1,0 +1,63 @@
+---
+const { content } = Astro.props;
+---
+
+<section class="layout-shell pb-10">
+    <div class="max-w-5xl mx-auto flex flex-col gap-8">
+        <h2 class="text-[20px] font-bold text-[#0055AA] uppercase font-inter text-center">
+            {content.title}
+        </h2>
+        
+        <!-- Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {content.items.map((item: any) => (
+                <div class="bg-white rounded-3xl border border-gray-200 p-6 flex flex-col h-full hover:shadow-lg transition-shadow group">
+                    <!-- Thumbnail -->
+                    <div class="aspect-video w-full bg-gray-100 overflow-hidden mb-6 relative">
+                         <img src={item.thumbnail} alt={item.title} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    </div>
+                    <!-- Content -->
+                    <div class="flex flex-col flex-grow gap-2">
+                        <div class="flex justify-between items-start mb-2">
+                             <h3 class="text-[#0055AA] font-bold text-2xl uppercase font-inter leading-tight">{item.title}</h3>
+                             <span class="text-sm text-gray-500 font-inter mt-1">{item.date}</span>
+                        </div>
+                        
+                        <p class="text-base text-[#1A1616] font-inter line-clamp-3 mb-6 flex-grow">
+                            {item.description}
+                        </p>
+                        
+                        <a href={item.link} class="mt-auto !text-[#0055AA] font-bold text-[15.274px] leading-[18.14px] underline font-inter underline-offset-4 decoration-2 decoration-[#0055AA] inline-flex items-center gap-1" style="color: #0055AA; text-decoration: underline; text-decoration-color: #0055AA;">
+                            See More &gt;
+                        </a>
+                    </div>
+                </div>
+            ))}
+        </div>
+        
+        <!-- Pagination -->
+        <div class="flex justify-center items-center gap-2 font-inter">
+            <!-- Prev Button -->
+            <button class="!w-[32px] !h-[32px] !p-0 !min-w-[32px] flex-shrink-0 flex items-center justify-center rounded-md bg-white border border-gray-200 text-[#0055AA] hover:bg-gray-50 transition-colors" style="width: 32px; height: 32px;">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                </svg>
+            </button>
+            <button class="!w-[32px] !h-[32px] !p-0 !min-w-[32px] flex-shrink-0 flex items-center justify-center rounded-md bg-[#0055AA] text-white text-sm font-bold transition-colors" style="width: 32px; height: 32px;">
+                1
+            </button>
+            <button class="!w-[32px] !h-[32px] !p-0 !min-w-[32px] flex-shrink-0 flex items-center justify-center rounded-md bg-white border border-gray-200 text-[#0055AA] text-sm font-bold hover:bg-gray-50 transition-colors" style="width: 32px; height: 32px;">
+                2
+            </button>
+            <button class="!w-[32px] !h-[32px] !p-0 !min-w-[32px] flex-shrink-0 flex items-center justify-center rounded-md bg-white border border-gray-200 text-[#0055AA] text-sm font-bold hover:bg-gray-50 transition-colors" style="width: 32px; height: 32px;">
+                3
+            </button>
+            <!-- Next Button -->
+            <button class="!w-[32px] !h-[32px] !p-0 !min-w-[32px] flex-shrink-0 flex items-center justify-center rounded-md bg-white border border-gray-200 text-[#0055AA] hover:bg-gray-50 transition-colors" style="width: 32px; height: 32px;">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
+            </button>
+        </div>
+    </div>
+</section>

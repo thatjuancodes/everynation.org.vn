@@ -23,9 +23,17 @@ export const navLinks: NavLink[] = [
       { label: 'Statement Of Faith', href: '/about/faith' },
     ],
   },
-  { label: 'Get Connected', href: '#gatherings', sublabel: 'Join a service' },
-  { label: 'Giving', href: '#mission' },
-  { label: 'Sermon', href: '#sermons' },
+  {
+    label: 'Get Connected',
+    href: 'javascript:void(0)',
+    sublabel: 'Join us',
+    items: [
+      { label: 'Join A Life Group', href: '/get-connected/join-life-group' },
+      { label: 'Prayer Request', href: '/get-connected/prayer-request' },
+    ],
+  },
+  { label: 'Giving', href: '/giving' },
+  { label: 'Sermon', href: '/sermon' },
 ];
 
 export const languageOptions: LanguageOption[] = [
