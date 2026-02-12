@@ -1,17 +1,20 @@
 ---
-import type { HeroContent } from '../../content/home';
+import type { HeroContent } from "../../content/home";
 
 interface Props {
   content: HeroContent;
 }
 
 const { content } = Astro.props;
-const lines = content.headline.split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
+const lines = content.headline
+  .split(/\r?\n/)
+  .map((line) => line.trim())
+  .filter(Boolean);
 ---
 
 <section
   id="hero"
-  class="relative flex min-h-screen items-center overflow-hidden bg-sky-900 text-white"
+  class="relative flex min-h-screen items-start overflow-hidden bg-sky-900 text-white pt-28 lg:pt-36"
   aria-labelledby="hero-heading"
 >
   <div class="absolute inset-0 overflow-hidden" data-hero-bg>
@@ -21,52 +24,58 @@ const lines = content.headline.split(/\r?\n/).map((line) => line.trim()).filter(
       class="h-full w-full object-contain object-left-top will-change-transform"
       loading="lazy"
     />
-    <div class="absolute inset-0" style="background: linear-gradient(280deg, rgba(189, 225, 255, 0.80) 1.53%, rgba(2, 96, 219, 0.80) 98.47%);" />
+    <div
+      class="absolute inset-0"
+      style="background: linear-gradient(280deg, rgba(189, 225, 255, 0.80) 1.53%, rgba(2, 96, 219, 0.80) 98.47%);"
+    >
+    </div>
   </div>
-  <div class="layout-shell relative flex flex-col items-start gap-8 py-20 text-left sm:py-24 lg:py-28">
+  <div
+    class="layout-shell relative flex flex-col items-start gap-5 pb-20 text-left"
+  >
     <p
-      class="text-[26px] font-semibold leading-[34px] text-white sm:text-[30px] sm:leading-[38px]"
+      class="text-[26px] font-semibold leading-[34px] text-white sm:text-[32px] sm:leading-[40px] tracking-[-0.64px]"
       style="letter-spacing:-0.64px"
     >
       {content.eyebrow}
     </p>
     <h1
       id="hero-heading"
-      class="max-w-4xl text-[42px] font-extrabold uppercase leading-[1.05] tracking-tight text-white sm:text-[58px] sm:leading-[1.05] lg:text-[84px] lg:leading-[92px] lg:tracking-[-3.84px]"
+      class="max-w-6xl text-[56px] font-extrabold uppercase leading-[1.05] tracking-tight text-white sm:text-[72px] sm:leading-[1.05] lg:text-[96px] lg:leading-[103px] lg:tracking-[-3.84px]"
       style="letter-spacing:-3.84px"
     >
-      {lines.map((line) => (
-        <span class="block whitespace-nowrap">{line}</span>
-      ))}
+      {lines.map((line) => <span class="block whitespace-nowrap">{line}</span>)}
     </h1>
     <div class="flex flex-wrap gap-4">
-      {content.actions.map((action, idx) => {
-        const primary = idx === 0;
-        return (
-          <a
-            href={action.href}
-            class={`rounded-md px-7 py-3 text-sm font-semibold shadow-md shadow-sky-800/30 transition hover:-translate-y-0.5 min-w-[243px] px-[18px] py-[12px] rounded-[4px] ${
-              primary
-                ? 'bg-sky-600 text-white hover:bg-sky-700 gleam-btn'
-                : 'bg-white text-sky-900 hover:bg-slate-100 border border-sky-200 shadow-sky-900/25 !text-sky-900'
-            }`}
-            style="text-align:center"
-          >
-            {action.label}
-          </a>
-        );
-      })}
+      {
+        content.actions.map((action, idx) => {
+          const primary = idx === 0;
+          return (
+            <a
+              href={action.href}
+              class={`rounded-md px-7 py-3 text-[16px] font-semibold leading-[19px] shadow-md shadow-sky-800/30 transition hover:-translate-y-0.5 min-w-[243px] px-[18px] py-[12px] rounded-[4px] ${
+                primary
+                  ? "bg-sky-600 text-white hover:bg-sky-700 gleam-btn"
+                  : "bg-white text-sky-900 hover:bg-slate-100 border border-sky-200 shadow-sky-900/25 !text-sky-900"
+              }`}
+              style="text-align:center"
+            >
+              {action.label}
+            </a>
+          );
+        })
+      }
     </div>
   </div>
 
   <script type="module">
-    const bg = document.querySelector('[data-hero-bg] img');
+    const bg = document.querySelector("[data-hero-bg] img");
     const onScroll = () => {
       if (!bg) return;
       const offset = window.scrollY * 0.2;
       bg.style.transform = `translateY(${offset}px)`;
     };
     onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener("scroll", onScroll, { passive: true });
   </script>
 </section>

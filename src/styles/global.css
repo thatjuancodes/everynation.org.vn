@@ -1,14 +1,29 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&family=Figtree:wght@400;500;600&display=swap");
 @import "tailwindcss";
 
+@theme {
+  --color-primary-blue: #0055AA;
+  --color-primary-dark: #0260DB; 
+  --color-accent-yellow: #FFCE46;
+  --color-accent-gold: #FACC15;
+  --color-paper: #F4EFE1;
+  --color-soft-blue: #A6C4E5;
+  --font-heading: "Montserrat", "Sentient", sans-serif;
+  --font-body: "Inter", "Figtree", sans-serif;
+}
+
 :root {
-  font-family: "Montserrat", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  color: #1b1b1b;
-  background-color: #f2f2f2;
+  font-family: var(--font-body);
+  color: #333333;
+  background-color: #FFFFFF;
 }
 
 body {
-  @apply text-slate-900 bg-slate-50;
+  @apply text-slate-900 bg-white;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
 }
 
 a {

@@ -1,0 +1,185 @@
+---
+const { content } = Astro.props;
+---
+
+<section class="layout-shell py-8 bg-slate-50">
+    <!-- Feature Image (Map Style) -->
+    <div class="w-full flex justify-center mb-10">
+        <img
+            src={content.images?.feature}
+            alt="Life Group Feature"
+            class="h-[371px] w-[1196px] object-cover shadow-sm"
+        />
+    </div>
+
+    <!-- Form Container -->
+    <div class="max-w-4xl mx-auto flex flex-col gap-8">
+        <div class="text-center">
+            <h2
+                class="text-[28px] font-bold text-[#0055AA] uppercase leading-[34px] tracking-[-0.56px] text-center font-inter"
+                style="font-family: 'Inter', sans-serif;"
+            >
+                {content.intro?.title}
+            </h2>
+            {
+                content.intro?.description && (
+                    <p
+                        class="mt-4 text-slate-600 max-w-2xl mx-auto"
+                        set:html={content.intro.description}
+                    />
+                )
+            }
+        </div>
+
+        <form
+            id="join-life-group-form"
+            class="bg-[#F6F6F6] p-8 md:p-12 grid grid-cols-1 md:grid-cols-2 gap-6"
+        >
+            <!-- First Name -->
+            <div class="md:col-span-1">
+                <label
+                    class="block text-[#0055AA] font-semibold mb-2 text-[16px] leading-[19px] font-inter"
+                    >First and Last Name *</label
+                >
+                <input
+                    type="text"
+                    required
+                    placeholder="Placeholder text here"
+                    class="w-full p-3 rounded-none border border-slate-200 focus:outline-none focus:border-[#0055AA] focus:placeholder-transparent placeholder:text-[#666666] placeholder:text-[16px] placeholder:font-normal placeholder:leading-[19px] placeholder:font-inter text-[16px] font-normal leading-[19px] font-inter text-[#333333]"
+                />
+            </div>
+
+            <!-- Mobile -->
+            <div class="md:col-span-1">
+                <label
+                    class="block text-[#0055AA] font-semibold mb-2 text-[16px] leading-[19px] font-inter"
+                    >Mobile Number *</label
+                >
+                <input
+                    type="tel"
+                    required
+                    placeholder="Placeholder text here"
+                    class="w-full p-3 rounded-none border border-slate-200 focus:outline-none focus:border-[#0055AA] focus:placeholder-transparent placeholder:text-[#666666] placeholder:text-[16px] placeholder:font-normal placeholder:leading-[19px] placeholder:font-inter text-[16px] font-normal leading-[19px] font-inter text-[#333333]"
+                />
+            </div>
+
+            <!-- Stage of Life -->
+            <div>
+                <label
+                    class="block text-[#0055AA] font-semibold mb-2 text-[16px] leading-[19px] font-inter"
+                    >Stage of Life</label
+                >
+                <div class="flex gap-4 mt-3">
+                    <label
+                        class="flex items-center gap-2 text-[16px] font-normal leading-[19px] font-inter text-[#333333]"
+                        ><input type="radio" name="stage_of_life" /> Student</label
+                    >
+                    <label
+                        class="flex items-center gap-2 text-[16px] font-normal leading-[19px] font-inter text-[#333333]"
+                        ><input type="radio" name="stage_of_life" /> Single</label
+                    >
+                    <label
+                        class="flex items-center gap-2 text-[16px] font-normal leading-[19px] font-inter text-[#333333]"
+                        ><input type="radio" name="stage_of_life" /> Married</label
+                    >
+                </div>
+            </div>
+
+            <!-- Gender -->
+            <div>
+                <label
+                    class="block text-[#0055AA] font-semibold mb-2 text-[16px] leading-[19px] font-inter"
+                    >Gender</label
+                >
+                <div class="flex gap-4 mt-3">
+                    <label
+                        class="flex items-center gap-2 text-[16px] font-normal leading-[19px] font-inter text-[#333333]"
+                        ><input type="radio" name="gender" /> Male</label
+                    >
+                    <label
+                        class="flex items-center gap-2 text-[16px] font-normal leading-[19px] font-inter text-[#333333]"
+                        ><input type="radio" name="gender" /> Female</label
+                    >
+                </div>
+            </div>
+
+            <!-- Address -->
+            <div>
+                <label
+                    class="block text-[#0055AA] font-semibold mb-2 text-[16px] leading-[19px] font-inter"
+                    >Address</label
+                >
+                <input
+                    type="text"
+                    placeholder="Placeholder text here"
+                    class="w-full p-3 rounded-none border border-slate-200 focus:outline-none focus:border-[#0055AA] focus:placeholder-transparent placeholder:text-[#666666] placeholder:text-[16px] placeholder:font-normal placeholder:leading-[19px] placeholder:font-inter text-[16px] font-normal leading-[19px] font-inter text-[#333333]"
+                />
+            </div>
+
+            <!-- Age -->
+            <div>
+                <label
+                    class="block text-[#0055AA] font-semibold mb-2 text-[16px] leading-[19px] font-inter"
+                    >Age</label
+                >
+                <input
+                    type="text"
+                    placeholder="Placeholder text here"
+                    class="w-full p-3 rounded-none border border-slate-200 focus:outline-none focus:border-[#0055AA] focus:placeholder-transparent placeholder:text-[#666666] placeholder:text-[16px] placeholder:font-normal placeholder:leading-[19px] placeholder:font-inter text-[16px] font-normal leading-[19px] font-inter text-[#333333]"
+                />
+            </div>
+
+            <!-- Textarea -->
+            <div class="md:col-span-2">
+                <label
+                    class="block text-[#0055AA] font-semibold mb-2 text-[16px] leading-[19px] font-inter"
+                    >How can we serve you?</label
+                >
+                <textarea
+                    rows="4"
+                    placeholder="Placeholder text here"
+                    class="w-full p-3 rounded-none border border-slate-200 focus:outline-none focus:border-[#0055AA] focus:placeholder-transparent placeholder:text-[#666666] placeholder:text-[16px] placeholder:font-normal placeholder:leading-[19px] placeholder:font-inter text-[16px] font-normal leading-[19px] font-inter text-[#333333]"
+                ></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="md:col-span-2 flex flex-col items-center mt-4">
+                <button
+                    type="submit"
+                    class="bg-[#0055AA] text-white font-bold py-3 px-8 rounded-md hover:bg-[#004499] transition-colors"
+                >
+                    Get Connected
+                </button>
+                <!-- Success Message -->
+                <div id="form-success-message" class="hidden text-center mt-4">
+                    <p class="text-[#0055AA] font-bold text-lg font-inter">
+                        Thank you for connecting with us! We will reach out to
+                        you soon.
+                    </p>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+<script>
+    const form = document.getElementById("join-life-group-form");
+    const successMessage = document.getElementById("form-success-message");
+    const submitButton = form.querySelector('button[type="submit"]');
+
+    if (form) {
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            submitButton.classList.add("opacity-50", "cursor-not-allowed");
+            submitButton.disabled = true;
+            submitButton.textContent = "Sending...";
+
+            setTimeout(() => {
+                successMessage.classList.remove("hidden");
+                submitButton.textContent = "Sent!";
+                form.reset();
+            }, 1000);
+        });
+    }
+</script>

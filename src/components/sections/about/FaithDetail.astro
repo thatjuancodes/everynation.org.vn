@@ -1,0 +1,57 @@
+---
+const { content } = Astro.props;
+---
+
+<section class="layout-shell py-8 bg-slate-50">
+    <!-- Top Map Image -->
+    <div class="w-full flex justify-center">
+        <img
+            src={content.images?.map}
+            alt="World Map"
+            class="h-[371px] w-[1196px] object-cover"
+        />
+    </div>
+    <div class="max-w-4xl mx-auto flex flex-col mt-8 gap-10">
+        <div class="text-center">
+            <h2
+                class="text-[32px] font-bold uppercase leading-[40px] tracking-[-0.64px] text-[#2964AF]"
+                style="font-family: 'Inter', sans-serif;"
+            >
+                {content.intro?.title}
+            </h2>
+        </div>
+
+        <div class="flex flex-col gap-4">
+            {
+                content.statements?.map((item: any, index: number) => (
+                    <details class="group bg-white border border-slate-200 shadow-sm open:shadow-md transition-shadow duration-300">
+                        <summary class="flex cursor-pointer items-center justify-between p-6 list-none [&::-webkit-details-marker]:hidden">
+                            <h3 class="text-[32px] font-bold text-[#2964AF] uppercase leading-[40px] tracking-[-0.64px]">
+                                {item.title}
+                            </h3>
+                            <span class="ml-4 shrink-0 rounded-full bg-slate-50 p-2 text-slate-400 group-open:bg-[#2964AF] group-open:text-white transition-all duration-300">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-5 w-5 transition-transform duration-300 group-open:rotate-180"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                >
+                                    <path
+                                        fill-rule="evenodd"
+                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                        clip-rule="evenodd"
+                                    />
+                                </svg>
+                            </span>
+                        </summary>
+                        <div class="px-6 pb-6 pt-0 animate-in fade-in slide-in-from-top-2 duration-300">
+                            <p class="text-[16px] font-normal leading-[19px] text-black">
+                                {item.content}
+                            </p>
+                        </div>
+                    </details>
+                ))
+            }
+        </div>
+    </div>
+</section>

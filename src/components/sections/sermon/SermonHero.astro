@@ -1,0 +1,23 @@
+---
+const { content } = Astro.props;
+---
+
+<section class="w-full bg-slate-50">
+    <!-- Hero Image Banner -->
+    <div
+        class="relative h-[200px] w-full overflow-hidden sm:h-[200px] lg:h-[200px]"
+    >
+        <div class="absolute inset-0">
+            <img
+                src={content?.image}
+                alt={content?.title}
+                class="h-full w-full object-cover"
+            />
+            <div
+                class="absolute inset-0"
+                style="background: linear-gradient(280deg, 1.53%, rgba(2, 96, 219, 0.80) 98.47%);"
+            >
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,57 @@
+---
+interface Props {
+    content: {
+        title: string;
+        body: string;
+        ctaLabel: string;
+        ctaLink: string;
+        image: string;
+    };
+}
+const { content } = Astro.props;
+---
+
+<section
+    id="mission"
+    class="relative grid min-h-[280px] gap-6 overflow-hidden rounded-[32px] border border-[#E5E5E5] bg-white p-6 shadow-sm lg:grid-cols-[0.45fr_0.55fr] lg:items-center lg:p-10"
+>
+    <!-- Background Image -->
+    <div class="absolute inset-0 z-0 pointer-events-none">
+        <img
+            src="/images/about-us-image-11.png"
+            alt=""
+            class="h-full w-full object-cover opacity-60"
+        />
+    </div>
+
+    <div class="relative z-10 lg:order-last">
+        <div
+            class="overflow-hidden rounded-[16px] shadow-lg h-[200px] sm:h-[240px] lg:h-[280px] w-full"
+        >
+            <img
+                src={content.image}
+                alt=""
+                class="h-full w-full object-cover"
+            />
+        </div>
+    </div>
+    <div class="relative z-10 flex flex-col items-center gap-8 text-center">
+        <h2
+            class="text-[32px] font-bold uppercase leading-[40px] tracking-[-1.92px] text-[#2964AF] sm:text-[40px] lg:text-[48px] lg:leading-[56px]"
+            style="font-family: 'Inter', sans-serif;"
+        >
+            {content.title}
+        </h2>
+        <p
+            class="max-w-md text-center text-[16px] font-normal leading-[19px] text-[#323338]"
+        >
+            {content.body}
+        </p>
+        <a
+            href={content.ctaLink}
+            class="text-[16px] font-semibold leading-[19px] !text-[#0055AA] !underline decoration-solid decoration-auto underline-offset-auto"
+        >
+            {content.ctaLabel}
+        </a>
+    </div>
+</section>

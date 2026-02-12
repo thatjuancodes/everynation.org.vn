@@ -22,7 +22,7 @@ export const weeklyGatherings = {
 export const aboutSection = {
   title: 'About Us',
   body:
-    'We exist to honor God by establishing Christ-centered, Spirit-empowered, socially responsible churches and campus ministries in every nation.',
+    'We exist to honor God by establishing\nChrist-centered, Spirit-empowered, socially\nresponsible churches and campus\nministries in every nation',
   ctaLabel: 'See More',
   image: '/images/map.jpg',
 };
@@ -60,11 +60,11 @@ export const missionStats = {
 };
 
 export const footerLinks = [
-  { label: 'Home', href: '#hero' },
-  { label: 'Our Mission', href: '#about' },
-  { label: 'Foundational Values', href: '#mission' },
-  { label: 'Statement Of Faith', href: '#mission' },
-  { label: 'Giving', href: '#mission' },
+  { label: 'Home', href: '/' },
+  { label: 'About Us', href: '/about' },
+  { label: 'Our Mission', href: '/about' },
+  { label: 'Foundational Values', href: '/about' },
+  { label: 'Statement Of Faith', href: '/about' },
   { label: 'Sermon', href: '#sermons' },
 ];
 

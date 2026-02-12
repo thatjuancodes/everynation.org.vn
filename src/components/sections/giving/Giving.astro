@@ -1,0 +1,102 @@
+---
+const { content } = Astro.props;
+---
+
+<section class="layout-shell py-8 md:py-8 bg-slate-50 flex flex-col gap-12">
+    <!-- Video Placeholder (Full Width in Container) -->
+    <!-- Video Player -->
+    <div
+        class="w-full aspect-video bg-black shadow-sm overflow-hidden relative group cursor-pointer"
+        id="video-container"
+    >
+        <video
+            id="giving-video"
+            src={content.hero?.video}
+            class="w-full h-full object-contain"
+            playsinline
+        >
+            Your browser does not support the video tag.
+        </video>
+
+        <!-- Play Overlay -->
+        <div
+            id="video-overlay"
+            class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition-colors z-10"
+        >
+            <div
+                class="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform backdrop-blur-sm"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    class="w-10 h-10 text-[#0055AA] ml-1"
+                >
+                    <path
+                        fill-rule="evenodd"
+                        d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z"
+                        clip-rule="evenodd"></path>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const container = document.getElementById("video-container");
+        const video = document.getElementById(
+            "giving-video",
+        ) as HTMLVideoElement;
+        const overlay = document.getElementById("video-overlay");
+
+        if (container && video && overlay) {
+            container.addEventListener("click", () => {
+                if (video.paused) {
+                    video.play();
+                    overlay.classList.add("hidden");
+                    video.controls = true;
+                }
+            });
+        }
+    </script>
+
+    <div class="max-w-5xl mx-auto flex flex-col gap-12 text-center w-full">
+        <!-- Intro Content -->
+        <div class="max-w-2xl mx-auto">
+            <h2
+                class="text-[28px] font-bold text-[#0055AA] uppercase leading-[34px] tracking-[-0.56px] font-inter text-center"
+                style="font-family: 'Inter', sans-serif;"
+            >
+                {content.intro?.title}
+            </h2>
+            <p
+                class="text-[16px] font-normal leading-[19px] text-[#1A1616] font-inter text-center"
+            >
+                {content.intro?.description}
+            </p>
+        </div>
+
+        <!-- QR Codes -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-6">
+            {
+                content.qrCodes?.map((qr) => (
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex flex-col items-center gap-4">
+                        <p class="text-[#0055AA] font-semibold text-[16px] uppercase font-inter text-center leading-[19px]">
+                            {qr.title}
+                        </p>
+                        <img
+                            src={qr.image}
+                            alt={qr.alt}
+                            class="w-full max-w-[300px] h-auto object-contain"
+                        />
+                    </div>
+                ))
+            }
+        </div>
+
+        <p
+            class="text-[16px] font-normal leading-[19px] text-[#1A1616] font-inter"
+        >
+            Thank you for participating with us. God bless you as you give.
+        </p>
+    </div>
+</section>

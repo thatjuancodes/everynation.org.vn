@@ -1,10 +1,10 @@
 ---
-import type { NavLink } from '../../content/navigation';
+import type { NavLink } from "../../content/navigation";
 
 interface SocialLink {
   label: string;
   href: string;
-  icon: 'facebook' | 'youtube';
+  icon: "facebook" | "youtube";
 }
 
 interface Props {
@@ -15,39 +15,56 @@ interface Props {
 const { links, socials } = Astro.props;
 ---
 
-<footer class="mt-16 border-t border-slate-200 bg-white">
-  <div class="layout-shell flex flex-col gap-4 py-8">
-    <div class="flex flex-col items-center gap-4 sm:flex-row sm:items-center sm:justify-between">
+<footer class="mt-5 border-t border-slate-200 bg-white">
+  <div class="layout-shell py-10">
+    <div class="flex flex-col items-center justify-between gap-8 lg:flex-row">
       <div class="flex items-center gap-3">
-        <img src="/images/logo.svg" alt="Every Nation Vietnam" class="h-auto w-[170px]" loading="lazy" />
+        <img
+          src="/images/logo.svg"
+          alt="Every Nation Vietnam"
+          class="h-auto w-[180px]"
+          loading="lazy"
+        />
       </div>
-      <nav class="flex flex-wrap items-center justify-center gap-6 text-xs font-medium text-slate-700 sm:justify-center">
-        {links.map((link) => (
-          <a href={link.href} class="transition hover:text-[#1b4f9b]">
-            {link.label}
-          </a>
-        ))}
+      <nav
+        class="flex flex-wrap items-center justify-center gap-9 text-[16px] font-semibold leading-[19px] text-[#0055AA]"
+      >
+        {
+          links.map((link) => (
+            <a href={link.href} class="transition hover:opacity-80">
+              {link.label}
+            </a>
+          ))
+        }
       </nav>
-      <div class="flex items-center gap-3">
-        {socials.map((social) => (
-          <a
-            href={social.href}
-            class="grid h-9 w-9 place-items-center rounded-full border border-slate-200 text-slate-600 transition hover:border-[#1b4f9b] hover:bg-[#e9f0fb] hover:text-[#1b4f9b]"
-            aria-label={social.label}
-          >
-            {social.icon === 'facebook' ? (
-              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor" aria-hidden="true">
-                <path d="M13 10h2.5l.5-3H13V5.5c0-.9.3-1.5 1.6-1.5H16V1.1C15.5 1 14.3 1 13 1c-2.6 0-4.4 1.6-4.4 4.5V7H6v3h2.6v9h4.4v-9Z" />
-              </svg>
-            ) : (
-              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor" aria-hidden="true">
-                <path d="M21.6 6.2c-.2-.8-.8-1.4-1.6-1.6C18.2 4.2 12 4.2 12 4.2s-6.2 0-8 .4c-.8.2-1.4.8-1.6 1.6C2 8 2 12 2 12s0 4 0 5.8c.2.8.8 1.4 1.6 1.6 1.8.4 8 .4 8 .4s6.2 0 8-.4c.8-.2 1.4-.8 1.6-1.6.4-1.8.4-5.8.4-5.8s0-4-.4-5.8ZM10 15.5v-7l5.2 3.5L10 15.5Z" />
-              </svg>
-            )}
-          </a>
-        ))}
+      <div class="flex items-center gap-4">
+        {
+          socials.map((social) => (
+            <a
+              href={social.href}
+              class="transition hover:opacity-80"
+              aria-label={social.label}
+            >
+              {social.icon === "facebook" ? (
+                <img
+                  src="/images/face.png"
+                  alt="Facebook"
+                  class="h-6 w-6 object-contain"
+                />
+              ) : (
+                <img
+                  src="/images/youtube.png"
+                  alt="YouTube"
+                  class="h-6 w-6 object-contain"
+                />
+              )}
+            </a>
+          ))
+        }
       </div>
     </div>
-    <p class="text-center text-xs text-slate-500">© {new Date().getFullYear()} Every Nation Vietnam. All rights reserved.</p>
+    <p class="mt-8 text-center text-xs text-slate-500">
+      © {new Date().getFullYear()} Every Nation Vietnam. All rights reserved.
+    </p>
   </div>
 </footer>
