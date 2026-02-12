@@ -1,0 +1,51 @@
+---
+const { content } = Astro.props;
+---
+
+<section class="layout-shell pt-8 pb-12">
+    <div class="max-w-5xl mx-auto text-center flex flex-col gap-8">
+        <h2
+            class="text-[28px] font-bold text-[#0055AA] uppercase font-inter leading-[34px] tracking-[-0.56px]"
+        >
+            {content.title}
+        </h2>
+
+        <!-- Video Player Placeholder -->
+        <div
+            class="w-full aspect-video bg-gray-200 relative overflow-hidden shadow-sm group cursor-pointer"
+        >
+            <div
+                class="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors"
+            >
+            </div>
+            <!-- Play Button -->
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div
+                    class="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        class="w-10 h-10 text-[#0055AA] ml-1"
+                    >
+                        <path
+                            fill-rule="evenodd"
+                            d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </div>
+            </div>
+            <!-- Text Overlay (Optional based on design) -->
+            <div
+                class="absolute bottom-8 left-0 right-0 text-center text-white p-4"
+            >
+                <h3
+                    class="text-4xl font-bold uppercase drop-shadow-lg font-inter"
+                >
+                    {content.seriesTitle}
+                </h3>
+            </div>
+        </div>
+    </div>
+</section>

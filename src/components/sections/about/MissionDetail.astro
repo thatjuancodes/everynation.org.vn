@@ -1,0 +1,102 @@
+---
+interface Props {
+    content: any;
+}
+
+const { content } = Astro.props;
+---
+
+<section class="bg-[#F6F6F6] py-8">
+    <div class="layout-shell flex flex-col gap-6">
+        <!-- Top Map Image -->
+        <div class="w-full flex justify-center">
+            <img
+                src={content.images?.map}
+                alt="World Map"
+                class="h-[371px] w-[1196px] object-cover"
+            />
+        </div>
+
+        <!-- Mission Statement -->
+        <div class="mx-auto w-full bg-white p-10 shadow-sm text-center">
+            <h2
+                class="text-[#0055AA] font-bold text-[28px] leading-[34px] tracking-[-0.56px]"
+                style="font-family: 'Inter', sans-serif;"
+            >
+                {content.missionStatement?.title}
+            </h2>
+            <p
+                class="mt-4 text-[#0055AA] font-semibold text-[28px] leading-[34px] tracking-[-0.56px]"
+                style="font-family: 'Inter', sans-serif;"
+                set:html={content.missionStatement?.description}
+            />
+        </div>
+
+        <!-- Image Grid -->
+        <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
+            <!-- Left: Large Vertical Image (Passport) -->
+            <div class="h-full w-full overflow-hidden">
+                <img
+                    src={content.images?.passport}
+                    alt="Mission Context"
+                    class="h-full w-full object-cover"
+                />
+            </div>
+
+            <!-- Right: Grid of 4 images -->
+            <div class="flex h-full flex-col gap-4">
+                <!-- Top Row: Unequal split (approx 1/3 and 2/3) -->
+                <div class="grid h-full grid-cols-3 gap-4">
+                    <div class="col-span-1 overflow-hidden">
+                        <img
+                            src={content.images?.grid1}
+                            alt="Mission Scene 1"
+                            class="h-full w-full object-cover"
+                        />
+                    </div>
+                    <div class="col-span-2 overflow-hidden">
+                        <img
+                            src={content.images?.grid2}
+                            alt="Mission Scene 2"
+                            class="h-full w-full object-cover"
+                        />
+                    </div>
+                </div>
+
+                <!-- Bottom Row: Equal split -->
+                <div class="grid h-full grid-cols-2 gap-4">
+                    <div class="overflow-hidden">
+                        <img
+                            src={content.images?.grid3}
+                            alt="Mission Scene 3"
+                            class="h-full w-full object-cover"
+                        />
+                    </div>
+                    <div class="overflow-hidden">
+                        <img
+                            src={content.images?.grid4}
+                            alt="Mission Scene 4"
+                            class="h-full w-full object-cover"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Text -->
+        <div class="mt-4 text-center">
+            <p
+                class="text-[#0055AA] font-semibold text-[28px] leading-[34px] tracking-[-0.56px]"
+                style="font-family: 'Inter', sans-serif;"
+            >
+                {content.footerText?.line1}
+            </p>
+            <p
+                class="text-[#0055AA] font-semibold text-[28px] leading-[34px] tracking-[-0.56px]"
+                style="font-family: 'Inter', sans-serif;"
+            >
+                {content.footerText?.line2}
+            </p>
+        </div>
+    </div>
+</section>

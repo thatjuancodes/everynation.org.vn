@@ -1,0 +1,54 @@
+---
+import SiteLayout from "../../components/layout/SiteLayout.astro";
+import DetailHero from "../../components/sections/about/DetailHero.astro";
+import JoinLifeGroup from "../../components/sections/get-connected/JoinLifeGroup.astro";
+import PrayerRequest from "../../components/sections/get-connected/PrayerRequest.astro";
+
+import { joinLifeGroupContent } from "../../content/join-life-group";
+import { prayerRequestContent } from "../../content/prayer-request";
+import { siteMeta, footerLinks } from "../../content/home";
+import {
+    navLinks,
+    socialLinks,
+    languageOptions,
+} from "../../content/navigation";
+
+export function getStaticPaths() {
+    return [
+        { params: { id: "join-life-group" } },
+        { params: { id: "prayer-request" } },
+    ];
+}
+
+const { id } = Astro.params;
+
+let content;
+let Component;
+
+// Select content and component based on ID
+if (id === "join-life-group") {
+    content = joinLifeGroupContent;
+    Component = JoinLifeGroup;
+} else if (id === "prayer-request") {
+    content = prayerRequestContent;
+    Component = PrayerRequest;
+} else {
+    return Astro.redirect("/404");
+}
+---
+
+<SiteLayout
+    title={`${content?.hero?.title} | ${siteMeta.title}`}
+    description={siteMeta.description}
+    navLinks={navLinks}
+    footerLinks={footerLinks}
+    socials={socialLinks}
+    languages={languageOptions}
+    activeHref={`/get-connected/${id}`}
+>
+    <!-- Shared Hero Section -->
+    <DetailHero content={content?.hero} />
+
+    <!-- Detail Component -->
+    <Component content={content} />
+</SiteLayout>

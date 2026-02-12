@@ -61,14 +61,62 @@ const {
         links.map((link) => {
           const isActive =
             link.href === activeHref ||
+            (link.href !== "/" && activeHref.startsWith(link.href)) ||
+            (link.items &&
+              link.items.some((item) => item.href === activeHref)) ||
             (activeHref === "/" && link.label.toLowerCase() === "home");
+          const hasItems = link.items && link.items.length > 0;
+
+          if (hasItems) {
+            return (
+              <div class="group relative">
+                <a
+                  href="javascript:void(0)"
+                  aria-current={isActive ? "page" : undefined}
+                  class={`nav-link flex w-fit items-center justify-center gap-1 rounded-full px-2 py-1 text-center transition ${
+                    isActive
+                      ? "!text-[#2964AF]"
+                      : "text-[#989898] hover:text-[#2964AF]"
+                  }`}
+                >
+                  <span>{link.label}</span>
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 20 20"
+                    class="h-4 w-4 text-slate-400 transition-transform duration-200 group-hover:rotate-180"
+                    fill="currentColor"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </a>
+
+                <div class="invisible absolute left-0 top-full w-max min-w-[200px] opacity-0 transition-opacity duration-200 group-hover:visible group-hover:opacity-100 pt-2">
+                  <div class="border border-slate-100 bg-white py-3 shadow-xl ring-1 ring-slate-900/5">
+                    {link.items?.map((item) => (
+                      <a
+                        href={item.href}
+                        class="block px-6 py-2.5 text-[15px] font-medium text-[#989898] hover:!text-[#2964AF]"
+                      >
+                        {item.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            );
+          }
+
           return (
             <a
               href={link.href}
               aria-current={isActive ? "page" : undefined}
               class={`nav-link flex w-fit items-center justify-center gap-1 rounded-full px-2 py-1 text-center transition ${
                 isActive
-                  ? "text-[#2964AF] underline decoration-2 underline-offset-8"
+                  ? "!text-[#2964AF] underline decoration-2 underline-offset-8"
                   : "text-[#989898] hover:text-[#2964AF]"
               }`}
             >
@@ -127,16 +175,6 @@ const {
       }
     </div>
   </div>
-
-  <style>
-    .nav-link {
-      color: #989898;
-      transition: color 160ms ease;
-    }
-    .nav-link:hover {
-      color: #2964af;
-    }
-  </style>
 
   <div class="relative lg:hidden">
     <div
