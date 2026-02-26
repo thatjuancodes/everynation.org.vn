@@ -22,7 +22,7 @@ export const weeklyGatherings = {
 export const aboutSection = {
   title: 'About Us',
   body:
-    'We exist to honor God by establishing\nChrist-centered, Spirit-empowered, socially\nresponsible churches and campus\nministries in every nation',
+    'We exist to honor God by\nestablishing Christ-centered,\nSpirit-empowered, socially\nresponsible churches and campus\nministries in every nation',
   ctaLabel: 'See More',
   image: '/images/map.jpg',
 };
