@@ -3,18 +3,19 @@ const { content } = Astro.props;
 ---
 
 <section class="layout-shell py-8 bg-slate-50">
-    <!-- Top Map Image -->
-    <div class="w-full flex justify-center">
-        <img
-            src={content.images?.map}
-            alt="World Map"
-            class="h-[371px] w-[1196px] object-cover"
-        />
-    </div>
-    <div class="max-w-4xl mx-auto flex flex-col mt-8 gap-10">
-        <div class="text-center">
+    <div class="max-w-4xl mx-auto flex flex-col gap-4 md:gap-10">
+        <!-- Top Map Image -->
+        <div class="w-full flex justify-center mb-4">
+            <img
+                src={content.images?.map}
+                alt="World Map"
+                class="h-[160px] md:h-[371px] w-full max-w-[1196px] object-cover mx-auto"
+            />
+        </div>
+
+        <div class="text-center mb-6">
             <h2
-                class="text-[32px] font-bold uppercase leading-[40px] tracking-[-0.64px] text-[#2964AF]"
+                class="text-[32px] font-bold uppercase leading-[40px] tracking-[-0.64px] text-[#0055AA]"
                 style="font-family: 'Inter', sans-serif;"
             >
                 {content.intro?.title}
@@ -26,7 +27,7 @@ const { content } = Astro.props;
                 content.statements?.map((item: any, index: number) => (
                     <details class="group bg-white border border-slate-200 shadow-sm open:shadow-md transition-shadow duration-300">
                         <summary class="flex cursor-pointer items-center justify-between p-6 list-none [&::-webkit-details-marker]:hidden">
-                            <h3 class="text-[32px] font-bold text-[#2964AF] uppercase leading-[40px] tracking-[-0.64px]">
+                            <h3 class="text-[22px] md:text-[32px] font-bold text-[#0055AA] uppercase leading-[28px] md:leading-[40px] tracking-[-0.64px]">
                                 {item.title}
                             </h3>
                             <span class="ml-4 shrink-0 rounded-full bg-slate-50 p-2 text-slate-400 group-open:bg-[#2964AF] group-open:text-white transition-all duration-300">

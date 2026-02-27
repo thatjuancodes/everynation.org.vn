@@ -5,7 +5,7 @@ export const missionContent = {
     },
     missionStatement: {
         title: 'OUR MISSION',
-        description: `We exist to honor God by establishing Christ-centered, <br /> Spirit-empowered, socially responsible churches and <br /> campus ministries in every nation.`,
+        description: `We exist to honor God by<br class="block md:hidden" />establishing Christ-centered,<br class="block md:hidden" />Spirit-empowered, socially<br class="block md:hidden" />responsible churches and campus<br class="block md:hidden" />ministries in every nation.`,
     },
     images: {
         map: '/images/about-us-rectangle-14.png',
@@ -16,7 +16,7 @@ export const missionContent = {
         grid4: '/images/group-16-rectangle-47.png',
     },
     footerText: {
-        line1: "Every Nation has churches in 84 of these nations",
-        line2: "In Viet Nam we also have 4 churches among the nation"
+        line1: "Every Nation has churches in 84 of<br class='block md:hidden' />these nations",
+        line2: "In Viet Nam we also have 4 churches<br class='block md:hidden' />among the nation"
     }
 };

@@ -4,27 +4,26 @@ const { content } = Astro.props;
 
 <section class="layout-shell py-8 bg-slate-50">
     <!-- Feature Image (Map Style) -->
-    <div class="w-full flex justify-center mb-10">
+    <div class="w-full flex justify-center mb-6 md:mb-10">
         <img
             src={content.images?.feature}
             alt="Life Group Feature"
-            class="h-[371px] w-[1196px] object-cover shadow-sm"
+            class="h-[120px] md:h-[371px] w-full max-w-[1196px] object-cover mx-auto shadow-sm"
         />
     </div>
 
     <!-- Form Container -->
-    <div class="max-w-4xl mx-auto flex flex-col gap-8">
+    <div class="max-w-4xl mx-auto flex flex-col gap-2 md:gap-8">
         <div class="text-center">
             <h2
-                class="text-[28px] font-bold text-[#0055AA] uppercase leading-[34px] tracking-[-0.56px] text-center font-inter"
+                class="text-[22px] md:text-[28px] font-bold text-[#0055AA] uppercase leading-[28px] md:leading-[34px] tracking-[-0.56px] text-center font-inter"
                 style="font-family: 'Inter', sans-serif;"
-            >
-                {content.intro?.title}
-            </h2>
+                set:html={content.intro?.title}
+            />
             {
                 content.intro?.description && (
                     <p
-                        class="mt-4 text-slate-600 max-w-2xl mx-auto"
+                        class="mt-4 text-[16px] leading-[24px] text-[#333333] max-w-4xl mx-auto text-center font-inter px-4 sm:px-0"
                         set:html={content.intro.description}
                     />
                 )
@@ -33,7 +32,7 @@ const { content } = Astro.props;
 
         <form
             id="join-life-group-form"
-            class="bg-[#F6F6F6] p-8 md:p-12 grid grid-cols-1 md:grid-cols-2 gap-6"
+            class="bg-[#F6F6F6] p-6 md:p-12 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-0"
         >
             <!-- First Name -->
             <div class="md:col-span-1">
@@ -146,7 +145,7 @@ const { content } = Astro.props;
             <div class="md:col-span-2 flex flex-col items-center mt-4">
                 <button
                     type="submit"
-                    class="bg-[#0055AA] text-white font-bold py-3 px-8 rounded-md hover:bg-[#004499] transition-colors"
+                    class="bg-[#0055AA] text-white text-[16px] leading-[19px] font-bold py-4 px-8 rounded-none hover:bg-[#004499] transition-colors w-fit font-inter"
                 >
                     Get Connected
                 </button>
@@ -163,21 +162,28 @@ const { content } = Astro.props;
 </section>
 
 <script>
-    const form = document.getElementById("join-life-group-form");
+    const form = document.getElementById(
+        "join-life-group-form",
+    ) as HTMLFormElement | null;
     const successMessage = document.getElementById("form-success-message");
-    const submitButton = form.querySelector('button[type="submit"]');
 
     if (form) {
+        const submitButton = form.querySelector(
+            'button[type="submit"]',
+        ) as HTMLButtonElement | null;
+
         form.addEventListener("submit", (e) => {
             e.preventDefault();
 
-            submitButton.classList.add("opacity-50", "cursor-not-allowed");
-            submitButton.disabled = true;
-            submitButton.textContent = "Sending...";
+            if (submitButton) {
+                submitButton.classList.add("opacity-50", "cursor-not-allowed");
+                submitButton.disabled = true;
+                submitButton.textContent = "Sending...";
+            }
 
             setTimeout(() => {
-                successMessage.classList.remove("hidden");
-                submitButton.textContent = "Sent!";
+                if (successMessage) successMessage.classList.remove("hidden");
+                if (submitButton) submitButton.textContent = "Sent!";
                 form.reset();
             }, 1000);
         });

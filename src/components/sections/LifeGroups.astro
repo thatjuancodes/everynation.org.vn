@@ -15,8 +15,9 @@ const { content } = Astro.props;
       style="background-image: url('/images/figma-12-2035.png'); background-size: cover; background-position: center;"
     >
       <!-- Desktop only: photo collage -->
-      <div
-        class="hidden lg:block relative min-h-[280px] w-full lg:order-first lg:min-h-[340px]"
+      <a
+        href={content.href || "#connect"}
+        class="hidden lg:block relative min-h-[280px] w-full lg:order-first lg:min-h-[340px] group cursor-pointer"
       >
         <div
           class="absolute top-10 left- z-30 w-25 sm:left-18 sm:w-34 lg:top-5 lg:left-26 lg:w-[140px]"
@@ -50,7 +51,7 @@ const { content } = Astro.props;
             loading="lazy"
           />
         </div>
-      </div>
+      </a>
       <div
         class="flex flex-col items-center justify-center gap-2 lg:gap-4 text-center lg:py-10 lg:px-8"
       >
@@ -66,8 +67,9 @@ const { content } = Astro.props;
         </h2>
 
         <!-- Mobile only: single image between heading and button -->
-        <div
-          class="lg:hidden w-full overflow-hidden mx-[5px] shadow-[0_14px_34px_rgba(0,0,0,0.15)]"
+        <a
+          href={content.href || "#connect"}
+          class="lg:hidden w-full overflow-hidden mx-[5px] shadow-[0_14px_34px_rgba(0,0,0,0.15)] block cursor-pointer"
         >
           <img
             src="/images/figma-12-2043.png"
@@ -75,10 +77,10 @@ const { content } = Astro.props;
             class="w-full h-[200px] object-cover"
             loading="lazy"
           />
-        </div>
+        </a>
 
         <a
-          href="#connect"
+          href={content.href || "#connect"}
           class="inline-flex min-w-[180px] items-center justify-center rounded-[6px] bg-[#0055AA] px-6 py-3 text-[15px] font-bold text-white shadow-[0_4px_14px_rgba(0,85,170,0.3)] transition hover:-translate-y-0.5 hover:bg-[#004488] !text-white lg:min-w-[240px]"
         >
           {content.ctaLabel}

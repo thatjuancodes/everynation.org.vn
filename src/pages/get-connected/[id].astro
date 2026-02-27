@@ -38,7 +38,8 @@ if (id === "join-life-group") {
 ---
 
 <SiteLayout
-    title={`${content?.hero?.title} | ${siteMeta.title}`}
+    title={`${content?.hero?.title?.replace(/<[^>]*>?/gm, "")} | ${siteMeta.title}`}
+    canonical={`${siteMeta.canonical}/get-connected/${id}`}
     description={siteMeta.description}
     navLinks={navLinks}
     footerLinks={footerLinks}

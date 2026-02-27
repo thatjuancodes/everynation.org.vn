@@ -33,6 +33,7 @@ export const lifeGroups = {
     'Grow deeper in community through small groups that meet across the city. Share life, faith, and friendship together.',
   image: '/images/life-group.jpg',
   ctaLabel: 'Get Connected',
+  href: '/get-connected/join-life-group',
 };
 
 export const heroContent = {

@@ -3,33 +3,34 @@ const { content } = Astro.props;
 ---
 
 <section class="layout-shell pt-8 bg-[">
-  <div class="flex flex-col gap-6">  
+  <div class="flex flex-col gap-4 md:gap-6">
     <!-- Top Map Image -->
-        <div class="w-full flex justify-center">
-            <img
-                src={content.images?.map}
-                alt="World Map"
-                class="h-[371px] w-[1196px] object-cover"
-            />
-        </div>  
-  <div class="bg-[#F6F6F6] p-8 sm:p-12 lg:p-16 flex flex-col gap-12 sm:gap-16 shadow-sm">
-    <!-- Intro -->
-    <div class="text-center space-y-6">
+    <div class="w-full flex justify-center mb-4">
+        <img
+            src={content.images?.map}
+            alt="World Map"
+            class="h-[160px] md:h-[371px] w-full max-w-[1196px] object-cover mx-auto"
+        />
+    </div>
+
+    <!-- Intro (Title) -->
+    <div class="text-center space-y-4 mb-2">
       <h2
-        class="text-[28px] font-bold uppercase leading-[34px] tracking-[-0.56px] text-[#0055AA]"
+        class="hidden md:block text-[32px] font-bold uppercase leading-[40px] tracking-[-0.64px] text-[#0055AA]"
         style="font-family: 'Inter', sans-serif;"
-      >
-        {content.intro?.title}
-      </h2>
-      <p class="text-[20px] font-semibold leading-[24px] text-[#2964AF] max-w-5xl mx-auto" set:html={content.intro?.description} />
+        set:html={content.intro?.title}
+      />
+      {content.intro?.description && (
+        <p class="text-[15px] sm:text-[16px] md:text-[20px] font-semibold leading-[22px] md:leading-[24px] text-[#0055AA] w-full px-4 md:px-0 md:max-w-5xl mx-auto text-center" set:html={content.intro?.description} />
+      )}
     </div>
 
     <!-- Values List -->
-    <div class="flex flex-col gap-12 w-fit mx-auto">
+    <div class="flex flex-col gap-8 w-fit mx-auto mt-4">
       {content.values?.map((value : any) => (
-        <div class="flex flex-col sm:flex-row gap-6 items-center">
+        <div class="flex flex-col sm:flex-row gap-4 md:gap-6 items-center">
           <!-- Icon Circle -->
-          <div class="shrink-0 mx-auto sm:mx-0">
+          <div class="hidden md:block shrink-0 mx-auto sm:mx-0">
              <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#2964AF] flex items-center justify-center text-white shadow-md">
                 {value.icon === 'lordship' && (
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 sm:w-12 sm:h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m7 11 5-5 5 5"/><path d="m7 17 5-5 5 5"/></svg>
@@ -50,8 +51,8 @@ const { content } = Astro.props;
           </div>
           
           <!-- Content -->
-          <div class="flex-1 space-y-2 text-center sm:text-left">
-            <h3 class="text-[32px] font-bold text-[#2964AF] uppercase leading-[40px] tracking-[-0.64px]">{value.title}</h3>
+          <div class="flex-1 space-y-2 text-left w-full px-4 sm:px-0 mx-auto">
+            <h3 class="text-[18px] md:text-[32px] font-bold text-[#0055AA] uppercase leading-[22px] md:leading-[40px] tracking-[-0.64px] mb-1">{value.title}</h3>
             <p class="text-[16px] font-normal leading-[19px] text-black">
                 <span set:html={value.description} />
                 <br/>
@@ -61,5 +62,4 @@ const { content } = Astro.props;
         </div>
       ))}
     </div>
-  </div>
 </section>

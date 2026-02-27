@@ -1,13 +1,13 @@
 export const joinLifeGroupContent = {
     hero: {
-        title: "JOIN A LIFE GROUP",
-        image: "/images/about-us-rectangle-2.png", 
+        title: "JOIN OUR<br class=\"block md:hidden\" />LIFE GROUP",
+        image: "/images/about-us-rectangle-2.png",
     },
     images: {
         feature: "/images/get-conntected-lg-rectangle-14.png",
     },
     intro: {
-        title: "WE WOULD LIKE TO CONNECT WITH YOU",
+        title: "WE WOULD LIKE TO<br class=\"block md:hidden\" />CONNECT WITH YOU",
         description: "",
     },
     form: {

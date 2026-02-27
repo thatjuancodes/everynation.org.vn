@@ -13,7 +13,7 @@ const { content } = Astro.props;
 
 <section
     id="faith"
-    class="relative grid min-h-[280px] gap-6 overflow-hidden rounded-[32px] border border-[#E5E5E5] bg-gradient-to-b from-[#F0F2F5] to-[#E1E4EA] p-6 shadow-sm lg:grid-cols-[0.45fr_0.55fr] lg:items-center lg:p-10"
+    class="relative flex flex-col gap-4 overflow-hidden border border-[#E5E5E5] bg-gradient-to-b from-[#F0F2F5] to-[#E1E4EA] p-4 shadow-sm lg:grid lg:min-h-[280px] lg:grid-cols-[0.45fr_0.55fr] lg:gap-6 lg:items-center lg:p-10 lg:rounded-[32px]"
 >
     <!-- Background Image -->
     <div class="absolute inset-0 z-0 pointer-events-none">
@@ -23,9 +23,16 @@ const { content } = Astro.props;
             class="h-full w-full object-cover opacity-40"
         />
     </div>
+    <h2
+        class="relative z-10 text-center text-[32px] font-bold uppercase leading-[40px] tracking-[-1.92px] text-[#2964AF] sm:text-[40px] lg:hidden"
+        style="font-family: 'Inter', sans-serif;"
+    >
+        {content.title}
+    </h2>
+
     <div class="relative z-10 lg:order-last">
         <div
-            class="overflow-hidden rounded-[16px] shadow-lg h-[200px] sm:h-[240px] lg:h-[280px] w-full"
+            class="h-[120px] sm:h-[160px] lg:h-[280px] w-full lg:overflow-hidden lg:rounded-[16px] lg:shadow-lg"
         >
             <img
                 src={content.image}
@@ -34,18 +41,19 @@ const { content } = Astro.props;
             />
         </div>
     </div>
-    <div class="relative z-10 flex flex-col items-center gap-8 text-center">
+    <div
+        class="relative z-10 flex flex-col items-center gap-2 lg:gap-8 text-center mt-2 lg:mt-0"
+    >
         <h2
-            class="text-[32px] font-bold uppercase leading-[40px] tracking-[-1.92px] text-[#2964AF] sm:text-[40px] lg:text-[48px] lg:leading-[56px]"
+            class="hidden lg:block text-[32px] font-bold uppercase leading-[40px] tracking-[-1.92px] text-[#2964AF] sm:text-[40px] lg:text-[48px] lg:leading-[56px]"
             style="font-family: 'Inter', sans-serif;"
         >
             {content.title}
         </h2>
         <p
-            class="max-w-md text-center text-[16px] font-normal leading-[19px] text-[#323338]"
-        >
-            {content.body}
-        </p>
+            class="w-full text-center text-[15px] sm:text-[16px] font-semibold md:font-bold leading-[22px] md:leading-[26px] !text-[#0055AA]"
+            set:html={content.body}
+        />
         <a
             href={content.ctaLink}
             class="text-[16px] font-semibold leading-[19px] !text-[#0055AA] !underline decoration-solid decoration-auto underline-offset-auto"
