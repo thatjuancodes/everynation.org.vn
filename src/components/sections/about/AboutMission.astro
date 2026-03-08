@@ -25,15 +25,14 @@ const { content } = Astro.props;
     </div>
 
     <h2
-        class="relative z-10 text-center text-[32px] font-bold uppercase leading-[40px] tracking-[-1.92px] text-[#2964AF] sm:text-[40px] lg:hidden"
+        class="relative z-10 text-center text-[32px] font-bold uppercase leading-[40px] text-[#2964AF] sm:text-[40px] lg:hidden"
         style="font-family: 'Inter', sans-serif;"
-    >
-        {content.title}
-    </h2>
+        set:html={content.title}
+    />
 
     <div class="relative z-10 lg:order-last">
         <div
-            class="h-[120px] sm:h-[160px] lg:h-[280px] w-full lg:overflow-hidden lg:rounded-[16px] lg:shadow-lg"
+            class="h-[120px] sm:h-[160px] lg:h-[280px] w-full lg:overflow-hidden lg:shadow-lg"
         >
             <img
                 src={content.image}
@@ -46,11 +45,10 @@ const { content } = Astro.props;
         class="relative z-10 flex flex-col items-center gap-2 lg:gap-8 text-center mt-2 lg:mt-0"
     >
         <h2
-            class="hidden lg:block text-[32px] font-bold uppercase leading-[40px] tracking-[-1.92px] text-[#2964AF] sm:text-[40px] lg:text-[48px] lg:leading-[56px]"
+            class="hidden lg:block text-[32px] font-bold uppercase leading-[40px] text-[#2964AF] sm:text-[40px] lg:text-[48px] lg:leading-[56px]"
             style="font-family: 'Inter', sans-serif;"
-        >
-            {content.title}
-        </h2>
+            set:html={content.title}
+        />
         <p
             class="w-full text-center text-[15px] sm:text-[16px] font-semibold md:font-bold leading-[22px] md:leading-[26px] !text-[#0055AA]"
             set:html={content.body}

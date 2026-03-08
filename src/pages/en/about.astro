@@ -1,0 +1,37 @@
+---
+import SiteLayout from "../../components/layout/SiteLayout.astro";
+import AboutHero from "../../components/sections/about/AboutHero.astro";
+import AboutMission from "../../components/sections/about/AboutMission.astro";
+import AboutValues from "../../components/sections/about/AboutValues.astro";
+import AboutFaith from "../../components/sections/about/AboutFaith.astro";
+import { aboutPageContent } from "../../content/about";
+import { siteMeta, footerLinks } from "../../content/home";
+import {
+    navLinks,
+    socialLinks,
+    languageOptions,
+} from "../../content/navigation";
+import { getLangFromUrl } from "../../utils/i18n";
+
+const lang = getLangFromUrl(Astro.url);
+const meta = siteMeta[lang];
+const { hero, mission, values, faith } = aboutPageContent[lang];
+---
+
+<SiteLayout
+    title={`About Us | ${meta.title}`}
+    description={meta.description}
+    canonical={`${siteMeta.canonical}/${lang}/about`}
+    navLinks={navLinks[lang]}
+    footerLinks={footerLinks[lang]}
+    socials={socialLinks}
+    languages={languageOptions}
+    activeHref={`/${lang}/about`}
+>
+    <AboutHero content={hero} />
+    <div class="layout-shell flex flex-col gap-10 py-10">
+        <AboutMission content={mission} />
+        <AboutValues content={values} />
+        <AboutFaith content={faith} />
+    </div>
+</SiteLayout>

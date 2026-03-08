@@ -16,7 +16,7 @@ const { content } = Astro.props;
     <div class="max-w-4xl mx-auto flex flex-col gap-2 md:gap-8">
         <div class="text-center">
             <h2
-                class="text-[22px] md:text-[28px] font-bold text-[#0055AA] uppercase leading-[28px] md:leading-[34px] tracking-[-0.56px] text-center font-inter"
+                class="text-[22px] md:text-[28px] font-bold text-[#0055AA] uppercase leading-[28px] md:leading-[34px] text-center font-inter"
                 style="font-family: 'Inter', sans-serif;"
                 set:html={content.intro?.title}
             />
@@ -34,12 +34,12 @@ const { content } = Astro.props;
             <div>
                 <label
                     class="block text-[#0055AA] font-semibold mb-2 text-[16px] leading-[19px] font-inter"
-                    >First and Last Name *</label
+                    >{content.form.fields[0].label}</label
                 >
                 <input
                     type="text"
                     required
-                    placeholder="Placeholder text here"
+                    placeholder={content.form.fields[0].placeholder}
                     class="w-full p-3 rounded-none border border-slate-200 focus:outline-none focus:border-[#0055AA] focus:placeholder-transparent placeholder:text-[#666666] placeholder:text-[16px] placeholder:font-normal placeholder:leading-[19px] placeholder:font-inter text-[16px] font-normal leading-[19px] font-inter text-[#333333]"
                 />
             </div>
@@ -48,11 +48,11 @@ const { content } = Astro.props;
             <div>
                 <label
                     class="block text-[#0055AA] font-semibold mb-2 text-[16px] leading-[19px] font-inter"
-                    >Your Facebook Page *</label
+                    >{content.form.fields[1].label}</label
                 >
                 <input
                     type="text"
-                    placeholder="Placeholder text here"
+                    placeholder={content.form.fields[0].placeholder}
                     class="w-full p-3 rounded-none border border-slate-200 focus:outline-none focus:border-[#0055AA] focus:placeholder-transparent placeholder:text-[#666666] placeholder:text-[16px] placeholder:font-normal placeholder:leading-[19px] placeholder:font-inter text-[16px] font-normal leading-[19px] font-inter text-[#333333]"
                 />
             </div>
@@ -61,12 +61,12 @@ const { content } = Astro.props;
             <div>
                 <label
                     class="block text-[#0055AA] font-semibold mb-2 text-[16px] leading-[19px] font-inter"
-                    >Fill Your Prayer Request Here</label
+                    >{content.form.textarea.label}</label
                 >
                 <textarea
                     rows="6"
                     required
-                    placeholder="Placeholder text here"
+                    placeholder={content.form.fields[0].placeholder}
                     class="w-full p-3 rounded-none border border-slate-200 focus:outline-none focus:border-[#0055AA] focus:placeholder-transparent placeholder:text-[#666666] placeholder:text-[16px] placeholder:font-normal placeholder:leading-[19px] placeholder:font-inter text-[16px] font-normal leading-[19px] font-inter text-[#333333]"
                 ></textarea>
             </div>
@@ -76,8 +76,10 @@ const { content } = Astro.props;
                 <button
                     type="submit"
                     class="bg-[#0055AA] text-white text-[16px] leading-[19px] font-bold py-4 px-8 rounded-none hover:bg-[#004499] transition-colors w-fit font-inter"
+                    data-sending={content.form.sendingLabel}
+                    data-sent={content.form.sentLabel}
                 >
-                    Send Prayer Request
+                    {content.form.submitLabel}
                 </button>
                 <!-- Success Message -->
                 <div
@@ -85,8 +87,7 @@ const { content } = Astro.props;
                     class="hidden text-center mt-4"
                 >
                     <p class="text-[#0055AA] font-bold text-lg font-inter">
-                        Thank you for sharing your request! We will be praying
-                        with you.
+                        {content.form.successMessage}
                     </p>
                 </div>
             </div>
@@ -116,14 +117,17 @@ const { content } = Astro.props;
                     "cursor-not-allowed",
                 );
                 prayerSubmitButton.disabled = true;
-                prayerSubmitButton.textContent = "Sending...";
+                prayerSubmitButton.textContent =
+                    prayerSubmitButton.getAttribute("data-sending") ||
+                    "Sending...";
             }
 
             setTimeout(() => {
                 if (prayerSuccessMessage)
                     prayerSuccessMessage.classList.remove("hidden");
                 if (prayerSubmitButton)
-                    prayerSubmitButton.textContent = "Sent!";
+                    prayerSubmitButton.textContent =
+                        prayerSubmitButton.getAttribute("data-sent") || "Sent!";
                 prayerForm.reset();
             }, 1000);
         });

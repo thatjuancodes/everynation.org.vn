@@ -8,16 +8,6 @@ const { content } = Astro.props;
 
 <section class="bg-[#F6F6F6] py-8">
     <div class="layout-shell flex flex-col gap-4 md:gap-6">
-        <!-- Title -->
-        <div class="w-full text-center mb-2 hidden md:block">
-            <h2
-                class="text-[#0055AA] font-bold text-[32px] uppercase leading-[40px] tracking-[-0.64px]"
-                style="font-family: 'Inter', sans-serif;"
-            >
-                {content.missionStatement?.title}
-            </h2>
-        </div>
-
         <!-- Top Map Image -->
         <div class="w-full flex justify-center">
             <img
@@ -90,12 +80,12 @@ const { content } = Astro.props;
         <!-- Footer Text -->
         <div class="mt-4 text-center">
             <p
-                class="mx-auto w-full px-4 mt-4 md:mt-0 text-[#0055AA] font-bold text-[18px] sm:text-[22px] md:text-[28px] leading-[26px] md:leading-[34px] tracking-[-0.56px]"
+                class="mx-auto w-full px-4 mt-4 md:mt-0 text-[#0055AA] font-bold text-[18px] sm:text-[22px] md:text-[28px] leading-[26px] md:leading-[34px]"
                 style="font-family: 'Inter', sans-serif;"
                 set:html={content.footerText?.line1}
             />
             <p
-                class="mx-auto w-full px-4 mt-1 text-[#0055AA] font-bold text-[18px] sm:text-[22px] md:text-[28px] leading-[26px] md:leading-[34px] tracking-[-0.56px]"
+                class="mx-auto w-full px-4 mt-1 text-[#0055AA] font-bold text-[18px] sm:text-[22px] md:text-[28px] leading-[26px] md:leading-[34px]"
                 style="font-family: 'Inter', sans-serif;"
                 set:html={content.footerText?.line2}
             />

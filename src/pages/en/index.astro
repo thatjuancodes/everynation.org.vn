@@ -1,0 +1,44 @@
+---
+import SiteLayout from "../../components/layout/SiteLayout.astro";
+import AboutUs from "../../components/sections/AboutUs.astro";
+import Hero from "../../components/sections/Hero.astro";
+import LifeGroups from "../../components/sections/LifeGroups.astro";
+import MissionStats from "../../components/sections/MissionStats.astro";
+import WeeklyGatherings from "../../components/sections/WeeklyGatherings.astro";
+import {
+  aboutSection,
+  footerLinks,
+  heroContent,
+  lifeGroups,
+  missionStats,
+  siteMeta,
+  weeklyGatherings,
+} from "../../content/home";
+import {
+  languageOptions,
+  navLinks,
+  socialLinks,
+} from "../../content/navigation";
+import { getLangFromUrl } from "../../utils/i18n";
+
+const lang = getLangFromUrl(Astro.url);
+const meta = siteMeta[lang];
+---
+
+<SiteLayout
+  title={meta.title}
+  description={meta.description}
+  canonical={siteMeta.canonical}
+  ogImage={siteMeta.ogImage}
+  navLinks={navLinks[lang]}
+  footerLinks={footerLinks[lang]}
+  socials={socialLinks}
+  languages={languageOptions}
+  activeHref={`/${lang}`}
+>
+  <Hero content={heroContent[lang]} />
+  <WeeklyGatherings content={weeklyGatherings[lang]} />
+  <AboutUs content={aboutSection[lang]} />
+  <LifeGroups content={lifeGroups[lang]} />
+  <MissionStats content={missionStats[lang]} />
+</SiteLayout>

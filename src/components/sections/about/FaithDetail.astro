@@ -15,7 +15,7 @@ const { content } = Astro.props;
 
         <div class="text-center mb-6">
             <h2
-                class="text-[32px] font-bold uppercase leading-[40px] tracking-[-0.64px] text-[#0055AA]"
+                class="text-[32px] font-bold uppercase leading-[40px] text-[#0055AA]"
                 style="font-family: 'Inter', sans-serif;"
             >
                 {content.intro?.title}
@@ -27,7 +27,7 @@ const { content } = Astro.props;
                 content.statements?.map((item: any, index: number) => (
                     <details class="group bg-white border border-slate-200 shadow-sm open:shadow-md transition-shadow duration-300">
                         <summary class="flex cursor-pointer items-center justify-between p-6 list-none [&::-webkit-details-marker]:hidden">
-                            <h3 class="text-[22px] md:text-[32px] font-bold text-[#0055AA] uppercase leading-[28px] md:leading-[40px] tracking-[-0.64px]">
+                            <h3 class="text-[22px] md:text-[32px] font-bold text-[#0055AA] uppercase leading-[28px] md:leading-[40px]">
                                 {item.title}
                             </h3>
                             <span class="ml-4 shrink-0 rounded-full bg-slate-50 p-2 text-slate-400 group-open:bg-[#2964AF] group-open:text-white transition-all duration-300">

@@ -1,0 +1,65 @@
+---
+import SiteLayout from "../../../components/layout/SiteLayout.astro";
+import DetailHero from "../../../components/sections/about/DetailHero.astro";
+import MissionDetail from "../../../components/sections/about/MissionDetail.astro";
+import ValuesDetail from "../../../components/sections/about/ValuesDetail.astro";
+import FaithDetail from "../../../components/sections/about/FaithDetail.astro";
+
+import { missionContent } from "../../../content/mission";
+import { valuesContent } from "../../../content/values";
+import { faithContent } from "../../../content/faith";
+import { siteMeta, footerLinks } from "../../../content/home";
+import {
+    navLinks,
+    socialLinks,
+    languageOptions,
+} from "../../../content/navigation";
+import { getLangFromUrl } from "../../../utils/i18n";
+
+export function getStaticPaths() {
+    return [
+        { params: { id: "mission" } },
+        { params: { id: "values" } },
+        { params: { id: "faith" } },
+    ];
+}
+
+const { id } = Astro.params;
+const lang = getLangFromUrl(Astro.url);
+const meta = siteMeta[lang];
+
+let content;
+let Component;
+
+// Select content and component based on ID
+if (id === "mission") {
+    content = missionContent[lang];
+    Component = MissionDetail;
+} else if (id === "values") {
+    content = valuesContent[lang];
+    Component = ValuesDetail;
+} else if (id === "faith") {
+    content = faithContent[lang];
+    Component = FaithDetail;
+} else {
+    // Fallback or 404 handling (though getStaticPaths prevents invalid IDs in static build)
+    return Astro.redirect("/404");
+}
+---
+
+<SiteLayout
+    title={`${content?.hero?.title?.replace(/<[^>]*>?/gm, "")} | ${meta.title}`}
+    canonical={`${siteMeta.canonical}/${lang}/about/${id}`}
+    description={meta.description}
+    navLinks={navLinks[lang]}
+    footerLinks={footerLinks[lang]}
+    socials={socialLinks}
+    languages={languageOptions}
+    activeHref={`/${lang}/about/${id}`}
+>
+    <!-- Shared Hero Section -->
+    <DetailHero content={content?.hero} />
+
+    <!-- Detail Component -->
+    <Component content={content} />
+</SiteLayout>

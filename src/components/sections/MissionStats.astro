@@ -16,9 +16,9 @@ const { content } = Astro.props;
   </div>
 
   <div class="layout-shell relative z-10 px-0 md:px-4 xl:px-0">
-    <!-- Centered Frame with Background Image -->
+    <!-- Mobile: Custom Design with Background Image -->
     <div
-      class="relative overflow-hidden rounded-none lg:rounded-[20px] border border-white/20 bg-[#0099FF] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] w-full max-w-7xl mx-auto min-h-[300px] flex items-center"
+      class="lg:hidden relative overflow-hidden rounded-none border border-white/20 bg-[#0099FF] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] w-full max-w-7xl mx-auto min-h-[300px] flex items-center"
     >
       <!-- Background Image -->
       <img
@@ -248,6 +248,24 @@ const { content } = Astro.props;
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- Desktop: Static Image mission.png -->
+    <div
+      class="hidden lg:block w-full max-w-7xl mx-auto relative lg:rounded-[20px] overflow-hidden shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)]"
+    >
+      <a
+        href="https://www.everynation.org/mission2029/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="block w-full hover:scale-[1.01] transition-transform duration-300 relative z-20"
+      >
+        <img
+          src="/images/mission.png"
+          alt="Mission 2029"
+          class="w-full h-auto object-cover"
+        />
+      </a>
     </div>
   </div>
 </section>

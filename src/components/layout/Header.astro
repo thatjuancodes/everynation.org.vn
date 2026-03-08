@@ -1,5 +1,6 @@
 ---
 import type { LanguageOption, NavLink } from "../../content/navigation";
+import { getTranslatedPath } from "../../utils/i18n";
 
 type CTA = {
   label: string;
@@ -39,14 +40,17 @@ const {
                 ? "/images/vn-flag.png"
                 : "/images/us-flag.png";
             return (
-              <span class="flex items-center justify-center">
+              <a
+                href={getTranslatedPath(Astro.url.pathname, lang.code)}
+                class="flex items-center justify-center"
+              >
                 <img
                   src={flagSrc}
                   alt={`${lang.label} flag`}
                   class="h-6 w-auto object-contain"
                   loading="lazy"
                 />
-              </span>
+              </a>
             );
           })
       }
@@ -185,7 +189,8 @@ const {
                   ? "/images/vn-flag.png"
                   : "/images/us-flag.png";
               return (
-                <span
+                <a
+                  href={getTranslatedPath(Astro.url.pathname, lang.code)}
                   class="flex items-center gap-1 rounded-full p-1 transition hover:bg-white"
                   aria-label={`Switch to ${lang.label}`}
                 >
@@ -195,7 +200,7 @@ const {
                     class="h-4 w-auto"
                     loading="lazy"
                   />
-                </span>
+                </a>
               );
             })}
           </div>
