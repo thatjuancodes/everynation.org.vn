@@ -3,7 +3,7 @@
 
 @theme {
   --color-primary-blue: #0055AA;
-  --color-primary-dark: #0260DB; 
+  --color-primary-dark: #0260DB;
   --color-accent-yellow: #FFCE46;
   --color-accent-gold: #FACC15;
   --color-paper: #F4EFE1;
@@ -22,7 +22,12 @@ body {
   @apply text-slate-900 bg-white;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
 }
 
@@ -65,13 +70,16 @@ button:focus-visible {
     transform: translateX(-260%) rotate(25deg);
     opacity: 0;
   }
+
   30% {
     opacity: 0.65;
   }
+
   50% {
     transform: translateX(260%) rotate(25deg);
     opacity: 0;
   }
+
   100% {
     transform: translateX(260%) rotate(25deg);
     opacity: 0;
@@ -116,9 +124,11 @@ button:focus-visible {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 50% 48%;
   }
+
   100% {
     background-position: 100% 52%;
   }

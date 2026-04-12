@@ -1,5 +1,5 @@
 ---
-import type { MissionStatsContent } from '../../content/home';
+import type { MissionStatsContent } from "../../content/home";
 
 interface Props {
   content: MissionStatsContent;
@@ -8,8 +8,264 @@ interface Props {
 const { content } = Astro.props;
 ---
 
-<section id="mission" class="bg-slate-50 px-4 pb-20 pt-6 lg:px-0">
-  <div class="layout-shell">
-    <div class="h-[420px] w-full rounded-[18px] bg-slate-200" aria-hidden="true"></div>
+<section id="mission" class="bg-white py-4 md:py-8 relative overflow-hidden">
+  <!-- Background Texture -->
+  <div
+    class="absolute inset-0 opacity-15 bg-[url('/images/group-8-texture-2-gray-1.png')] bg-cover bg-center mix-blend-overlay pointer-events-none"
+  >
+  </div>
+
+  <div class="layout-shell relative z-10 px-0 md:px-4 xl:px-0">
+    <!-- Mobile: Custom Design with Background Image -->
+    <div
+      class="lg:hidden relative overflow-hidden rounded-none border border-white/20 bg-[#0099FF] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] w-full max-w-7xl mx-auto min-h-[300px] flex items-center"
+    >
+      <!-- Background Image -->
+      <img
+        src="/images/figma-14-3169.png"
+        alt=""
+        class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-multiply"
+      />
+
+      <!-- Content Grid Overlay -->
+      <div
+        class="relative z-10 w-full grid lg:grid-cols-12 gap-8 items-center px-4 md:px-8 py-6 lg:px-12 lg:py-8"
+      >
+        <!-- Left: Visual & Decor (3 cols) -->
+        <div
+          class="col-span-12 lg:col-span-4 relative h-full lg:min-h-[280px] flex flex-col items-center justify-center z-20 pointer-events-auto gap-8 py-6 lg:py-0"
+        >
+          <!-- Top Decor Wrapper (Arrow + Tape) -->
+          <div
+            class="relative w-full h-full flex flex-col items-center justify-center pointer-events-auto"
+          >
+            <a
+              href="https://www.everynation.org/mission2029/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:scale-105 transition-transform cursor-pointer relative z-30 flex flex-col items-center w-full"
+            >
+              <!-- Arrow Decoration (Top) -->
+              <div
+                class="w-full md:max-w-[220px] drop-shadow-md mb-8 flex justify-center"
+              >
+                <img
+                  src="/images/figma-30-3786.png"
+                  alt="Sứ Mệnh 2029"
+                  class="hidden md:block w-fit h-auto object-contain mx-auto"
+                />
+                <img
+                  src="/images/sumenhMobile.png"
+                  alt="Sứ Mệnh 2029"
+                  class="block md:hidden w-[60%] max-w-[170px] h-auto object-contain mx-auto"
+                />
+              </div>
+
+              <!-- Tape Decoration (Bottom) -->
+              <div
+                class="w-full md:max-w-[360px] drop-shadow-lg -mt-4 flex justify-center"
+              >
+                <img
+                  src="/images/figma-30-716.png"
+                  alt="Mission 2029"
+                  class="hidden md:block w-fit h-auto object-contain mx-auto"
+                />
+                <img
+                  src="/images/missionMoblie.png"
+                  alt="Mission 2029"
+                  class="block md:hidden w-[85%] max-w-[280px] h-auto object-contain mx-auto"
+                />
+              </div>
+            </a>
+          </div>
+
+          <!-- Center: Stats Card (7 cols) -->
+          <div
+            class="hidden lg:block col-span-12 lg:col-span-6 relative z-10 self-start"
+          >
+            <div
+              class="bg-[url('/images/about-us-image-11.png')] bg-cover bg-center rounded-[24px] pt-5 px-[30px] pb-2 md:pt-6 md:px-[34px] md:pb-2 shadow-2xl relative transition hover:scale-[1.01] duration-300"
+              style="height: fit-content;"
+            >
+              <!-- Tape Decoration -->
+              <img
+                src="/images/figma-30-3761.png"
+                alt=""
+                class="absolute -top-5 left-3 w-32 md:w-40 z-20 pointer-events-none"
+              />
+              <div class="flex flex-col gap-6 mt-6">
+                <!-- TOP ROW: 84 (left) | 19 + 711 (right) -->
+                <div class="flex flex-col md:flex-row gap-6 lg:gap-6 flex-1">
+                  <!-- Left: 84 stat -->
+                  <div
+                    class="flex-[5] flex flex-col justify-start items-center md:items-start text-center md:text-left"
+                  >
+                    <span
+                      class="text-[#1A3B77] font-['General_Sans'] text-[80px] md:text-[125px] font-semibold leading-[0.8] block"
+                    >
+                      84
+                    </span>
+                    <p
+                      style="color: #1A3B77; font-family: 'General Sans'; font-size: 24px; font-style: normal; font-weight: 600; line-height: normal; margin-top: 0.5rem; max-width: 240px;"
+                    >
+                      Nations with an<br />Every Nation<br />church
+                    </p>
+                    <p
+                      style="color: #000; font-family: 'Inter 18pt'; font-size: 10px; font-style: italic; font-weight: 400; line-height: normal; margin-top: 0.5rem; max-width: 240px;"
+                    >
+                      84 Quốc gia có Hội thánh Every Nation
+                    </p>
+                  </div>
+
+                  <!-- Right: 19 + 711 -->
+                  <div
+                    class="flex-[7] flex flex-col gap-6 md:gap-0 justify-between items-center md:items-end text-center md:text-right"
+                  >
+                    <!-- 19 stat -->
+                    <div class="flex flex-col items-center md:items-end w-full">
+                      <div
+                        class="flex flex-col sm:flex-row items-center sm:items-baseline justify-center md:justify-end gap-2 sm:gap-4 w-full text-center md:text-right"
+                      >
+                        <span
+                          class="text-[#1A3B77] font-['General_Sans'] text-[48px] md:text-[60px] font-semibold leading-[0.9] block"
+                        >
+                          19
+                        </span>
+                        <div
+                          class="flex flex-col items-center md:items-end sm:-translate-y-1/2"
+                        >
+                          <span
+                            class="text-[#1A3B77] font-['General_Sans'] text-[18px] md:text-[22px] font-semibold leading-normal block"
+                          >
+                            Outreaches
+                          </span>
+                          <span
+                            class="text-[#1A3B77] font-['Sentient'] text-[16px] md:text-[18px] font-medium italic leading-normal block"
+                          >
+                            to new nations
+                          </span>
+                        </div>
+                      </div>
+                      <span
+                        class="text-black font-['Inter'] text-[10px] italic font-normal leading-normal block text-center md:text-right whitespace-normal sm:whitespace-nowrap sm:-mt-3"
+                      >
+                        19 Hoạt động truyền giáo đến các quốc gia mới
+                      </span>
+                    </div>
+
+                    <!-- 711 stat -->
+                    <div
+                      class="flex flex-col sm:flex-row items-center sm:items-baseline justify-center md:justify-end gap-2 sm:gap-4 w-full text-center md:text-right"
+                    >
+                      <span
+                        class="text-[#1A3B77] font-['General_Sans'] text-[48px] md:text-[60px] font-semibold leading-[0.9] block"
+                      >
+                        711
+                      </span>
+                      <div
+                        class="flex flex-col items-center md:items-end sm:-translate-y-[20%]"
+                      >
+                        <span
+                          class="text-[#1A3B77] font-['General_Sans'] text-[18px] md:text-[20px] font-semibold leading-normal block"
+                        >
+                          Churches
+                        </span>
+                        <span
+                          class="text-black font-['Inter'] text-[10px] italic font-normal leading-normal mt-1 block"
+                        >
+                          711 Hội thánh
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- BOTTOM ROW: Note box (left) | 1,405 (right) — items-stretch for equal height -->
+                <div
+                  class="flex flex-col sm:flex-row gap-6 sm:gap-4 items-center sm:items-stretch"
+                >
+                  <!-- Note box -->
+                  <div
+                    class="w-[170px] flex-none bg-[#C7D2EE] px-4 py-2 sm:py-0 flex flex-col justify-center text-center sm:text-left rounded-md sm:rounded-none sm:self-start sm:h-[52px]"
+                  >
+                    <p
+                      style="color: #1A3B77; font-family: 'Sentient'; font-size: 16px; font-style: italic; font-weight: 500; line-height: normal;"
+                    >
+                      *Numbers as of<br />September 2025.
+                    </p>
+                    <p
+                      style="color: #000; font-family: 'Inter 18pt'; font-size: 9px; font-style: italic; font-weight: 400; line-height: normal; margin-top: 3px;"
+                    >
+                      *Số liệu tính đến tháng 9 năm 2025.
+                    </p>
+                  </div>
+
+                  <!-- 1,405 stat -->
+                  <div
+                    class="flex-1 min-w-0 flex flex-col sm:flex-row items-center sm:items-baseline justify-center md:justify-end gap-1 text-center md:text-right"
+                  >
+                    <span
+                      class="text-[#1A3B77] font-['General_Sans'] text-[48px] md:text-[56px] font-semibold leading-[0.9] block"
+                    >
+                      1,405
+                    </span>
+                    <div
+                      class="flex flex-col items-center sm:items-start sm:-translate-y-[40%]"
+                    >
+                      <span
+                        class="text-[#1A3B77] font-['General_Sans'] text-[18px] md:text-[20px] font-semibold leading-normal block sm:pl-7"
+                      >
+                        University<br class="hidden sm:block" /> Campuses
+                      </span>
+                      <span
+                        class="text-black font-['Inter'] text-[10px] italic font-normal leading-normal mt-1 block whitespace-normal sm:whitespace-nowrap"
+                      >
+                        1.405 Khuôn viên trường đại học
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: See More Button (2 cols) - Centered -->
+          <div
+            class="hidden lg:flex col-span-12 lg:col-span-2 justify-center relative pb-8 lg:pb-0 h-full items-center"
+          >
+            <div class="relative inline-block">
+              <a
+                href="/about"
+                class="block group relative active:scale-95 transition-transform"
+              >
+                <div
+                  class="bg-white text-[#0055AA] font-bold text-sm px-8 py-3 shadow-lg border border-gray-100 hover:shadow-xl hover:bg-gray-50 transition-all whitespace-nowrap"
+                >
+                  See More
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Desktop: Static Image mission.png -->
+    <div
+      class="hidden lg:block w-full max-w-7xl mx-auto relative lg:rounded-[20px] overflow-hidden shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)]"
+    >
+      <a
+        href="https://www.everynation.org/mission2029/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="block w-full hover:scale-[1.01] transition-transform duration-300 relative z-20"
+      >
+        <img
+          src="/images/mission.png"
+          alt="Mission 2029"
+          class="w-full h-auto object-cover"
+        />
+      </a>
+    </div>
   </div>
 </section>

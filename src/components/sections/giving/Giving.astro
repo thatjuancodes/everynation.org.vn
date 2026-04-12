@@ -63,40 +63,37 @@ const { content } = Astro.props;
         <!-- Intro Content -->
         <div class="max-w-2xl mx-auto">
             <h2
-                class="text-[28px] font-bold text-[#0055AA] uppercase leading-[34px] tracking-[-0.56px] font-inter text-center"
-                style="font-family: 'Inter', sans-serif;"
-            >
-                {content.intro?.title}
-            </h2>
-            <p
-                class="text-[16px] font-normal leading-[19px] text-[#1A1616] font-inter text-center"
-            >
-                {content.intro?.description}
-            </p>
+                class="text-[28px] font-bold text-[#0055AA] uppercase leading-[34px] font-inter text-center"
+                set:html={content.intro?.title}
+            />
         </div>
-
-        <!-- QR Codes -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-6">
-            {
-                content.qrCodes?.map((qr) => (
-                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex flex-col items-center gap-4">
-                        <p class="text-[#0055AA] font-semibold text-[16px] uppercase font-inter text-center leading-[19px]">
-                            {qr.title}
-                        </p>
-                        <img
-                            src={qr.image}
-                            alt={qr.alt}
-                            class="w-full max-w-[300px] h-auto object-contain"
-                        />
-                    </div>
-                ))
-            }
-        </div>
-
         <p
-            class="text-[16px] font-normal leading-[19px] text-[#1A1616] font-inter"
-        >
-            Thank you for participating with us. God bless you as you give.
-        </p>
+            class="text-[16px] font-normal leading-[19px] text-[#1A1616] font-inter text-center"
+            set:html={content.intro?.description}
+        />
     </div>
+
+    <!-- QR Codes -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-6">
+        {
+            content.qrCodes?.map((qr) => (
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex flex-col items-center gap-4">
+                    <p class="text-[#0055AA] font-semibold text-[16px] uppercase font-inter text-center leading-[19px]">
+                        {qr.title}
+                    </p>
+                    <img
+                        src={qr.image}
+                        alt={qr.alt}
+                        class="w-full max-w-[300px] h-auto object-contain"
+                    />
+                </div>
+            ))
+        }
+    </div>
+
+    <p
+        class="text-[16px] font-normal leading-[19px] text-[#1A1616] font-inter text-center"
+    >
+        {content.footerText}
+    </p>
 </section>

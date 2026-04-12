@@ -4,43 +4,42 @@ const { content } = Astro.props;
 
 <section class="layout-shell py-8 bg-slate-50">
     <!-- Feature Image (Map Style) -->
-    <div class="w-full flex justify-center mb-10">
+    <div class="w-full flex justify-center mb-6 md:mb-10">
         <img
             src={content.images?.feature}
             alt="Prayer Request Feature"
-            class="h-[371px] w-[1196px] object-cover shadow-sm"
+            class="h-[120px] md:h-[371px] w-full max-w-[1196px] object-cover mx-auto shadow-sm"
         />
     </div>
 
     <!-- Form Container -->
-    <div class="max-w-4xl mx-auto flex flex-col gap-8">
+    <div class="max-w-4xl mx-auto flex flex-col gap-2 md:gap-8">
         <div class="text-center">
             <h2
-                class="text-[28px] font-bold text-[#0055AA] uppercase leading-[34px] tracking-[-0.56px] text-center font-inter"
+                class="text-[22px] md:text-[28px] font-bold text-[#0055AA] uppercase leading-[28px] md:leading-[34px] text-center font-inter"
                 style="font-family: 'Inter', sans-serif;"
-            >
-                {content.intro?.title}
-            </h2>
+                set:html={content.intro?.title}
+            />
             <p
-                class="mt-4 text-[16px] leading-[24px] text-[#333333] max-w-4xl mx-auto text-left whitespace-pre-line font-inter"
+                class="mt-4 text-[16px] leading-[24px] text-[#333333] max-w-4xl mx-auto text-center font-inter px-4 sm:px-0"
                 set:html={content.intro?.description}
             />
         </div>
 
         <form
             id="prayer-request-form"
-            class="bg-[#F6F6F6] p-8 md:p-12 flex flex-col gap-6"
+            class="bg-[#F6F6F6] p-6 md:p-12 flex flex-col gap-4 mt-0"
         >
             <!-- First Name -->
             <div>
                 <label
                     class="block text-[#0055AA] font-semibold mb-2 text-[16px] leading-[19px] font-inter"
-                    >First and Last Name *</label
+                    >{content.form.fields[0].label}</label
                 >
                 <input
                     type="text"
                     required
-                    placeholder="Placeholder text here"
+                    placeholder={content.form.fields[0].placeholder}
                     class="w-full p-3 rounded-none border border-slate-200 focus:outline-none focus:border-[#0055AA] focus:placeholder-transparent placeholder:text-[#666666] placeholder:text-[16px] placeholder:font-normal placeholder:leading-[19px] placeholder:font-inter text-[16px] font-normal leading-[19px] font-inter text-[#333333]"
                 />
             </div>
@@ -49,12 +48,11 @@ const { content } = Astro.props;
             <div>
                 <label
                     class="block text-[#0055AA] font-semibold mb-2 text-[16px] leading-[19px] font-inter"
-                    >Your Facebook Page (Example:
-                    https://www.facebook.com/ten.kennnnn)</label
+                    >{content.form.fields[1].label}</label
                 >
                 <input
                     type="text"
-                    placeholder="Placeholder text here"
+                    placeholder={content.form.fields[0].placeholder}
                     class="w-full p-3 rounded-none border border-slate-200 focus:outline-none focus:border-[#0055AA] focus:placeholder-transparent placeholder:text-[#666666] placeholder:text-[16px] placeholder:font-normal placeholder:leading-[19px] placeholder:font-inter text-[16px] font-normal leading-[19px] font-inter text-[#333333]"
                 />
             </div>
@@ -63,12 +61,12 @@ const { content } = Astro.props;
             <div>
                 <label
                     class="block text-[#0055AA] font-semibold mb-2 text-[16px] leading-[19px] font-inter"
-                    >Fill Your Prayer Request Here</label
+                    >{content.form.textarea.label}</label
                 >
                 <textarea
                     rows="6"
                     required
-                    placeholder="Placeholder text here"
+                    placeholder={content.form.fields[0].placeholder}
                     class="w-full p-3 rounded-none border border-slate-200 focus:outline-none focus:border-[#0055AA] focus:placeholder-transparent placeholder:text-[#666666] placeholder:text-[16px] placeholder:font-normal placeholder:leading-[19px] placeholder:font-inter text-[16px] font-normal leading-[19px] font-inter text-[#333333]"
                 ></textarea>
             </div>
@@ -77,9 +75,11 @@ const { content } = Astro.props;
             <div class="flex flex-col items-center mt-4">
                 <button
                     type="submit"
-                    class="bg-[#0055AA] text-white font-bold py-3 px-8 rounded-md hover:bg-[#004499] transition-colors"
+                    class="bg-[#0055AA] text-white text-[16px] leading-[19px] font-bold py-4 px-8 rounded-none hover:bg-[#004499] transition-colors w-fit font-inter"
+                    data-sending={content.form.sendingLabel}
+                    data-sent={content.form.sentLabel}
                 >
-                    Send Prayer Request
+                    {content.form.submitLabel}
                 </button>
                 <!-- Success Message -->
                 <div
@@ -87,8 +87,7 @@ const { content } = Astro.props;
                     class="hidden text-center mt-4"
                 >
                     <p class="text-[#0055AA] font-bold text-lg font-inter">
-                        Thank you for sharing your request! We will be praying
-                        with you.
+                        {content.form.successMessage}
                     </p>
                 </div>
             </div>
@@ -97,17 +96,17 @@ const { content } = Astro.props;
 </section>
 
 <script>
-    const prayerForm = document.getElementById("prayer-request-form");
+    const prayerForm = document.getElementById(
+        "prayer-request-form",
+    ) as HTMLFormElement | null;
     const prayerSuccessMessage = document.getElementById(
         "prayer-success-message",
     );
-    // Ensure button selection is safe even if form is null (though logic guarded)
-    // But button is inside form, so selector is scoped.
 
     if (prayerForm) {
         const prayerSubmitButton = prayerForm.querySelector(
             'button[type="submit"]',
-        );
+        ) as HTMLButtonElement | null;
 
         prayerForm.addEventListener("submit", (e) => {
             e.preventDefault();
@@ -118,14 +117,17 @@ const { content } = Astro.props;
                     "cursor-not-allowed",
                 );
                 prayerSubmitButton.disabled = true;
-                prayerSubmitButton.textContent = "Sending...";
+                prayerSubmitButton.textContent =
+                    prayerSubmitButton.getAttribute("data-sending") ||
+                    "Sending...";
             }
 
             setTimeout(() => {
                 if (prayerSuccessMessage)
                     prayerSuccessMessage.classList.remove("hidden");
                 if (prayerSubmitButton)
-                    prayerSubmitButton.textContent = "Sent!";
+                    prayerSubmitButton.textContent =
+                        prayerSubmitButton.getAttribute("data-sent") || "Sent!";
                 prayerForm.reset();
             }, 1000);
         });

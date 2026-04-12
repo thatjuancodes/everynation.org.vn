@@ -1,0 +1,58 @@
+---
+import SiteLayout from "../../../components/layout/SiteLayout.astro";
+import DetailHero from "../../../components/sections/about/DetailHero.astro";
+import JoinLifeGroup from "../../../components/sections/get-connected/JoinLifeGroup.astro";
+import PrayerRequest from "../../../components/sections/get-connected/PrayerRequest.astro";
+
+import { joinLifeGroupContent } from "../../../content/join-life-group";
+import { prayerRequestContent } from "../../../content/prayer-request";
+import { siteMeta, footerLinks } from "../../../content/home";
+import {
+    navLinks,
+    socialLinks,
+    languageOptions,
+} from "../../../content/navigation";
+import { getLangFromUrl } from "../../../utils/i18n";
+
+export function getStaticPaths() {
+    return [
+        { params: { id: "join-life-group" } },
+        { params: { id: "prayer-request" } },
+    ];
+}
+
+const { id } = Astro.params;
+const lang = getLangFromUrl(Astro.url);
+const meta = siteMeta[lang];
+
+let content;
+let Component;
+
+// Select content and component based on ID
+if (id === "join-life-group") {
+    content = joinLifeGroupContent[lang];
+    Component = JoinLifeGroup;
+} else if (id === "prayer-request") {
+    content = prayerRequestContent[lang];
+    Component = PrayerRequest;
+} else {
+    return Astro.redirect("/404");
+}
+---
+
+<SiteLayout
+    title={`${content?.hero?.title?.replace(/<[^>]*>?/gm, "")} | ${meta.title}`}
+    canonical={`${siteMeta.canonical}/${lang}/get-connected/${id}`}
+    description={meta.description}
+    navLinks={navLinks[lang]}
+    footerLinks={footerLinks[lang]}
+    socials={socialLinks}
+    languages={languageOptions}
+    activeHref={`/${lang}/get-connected/${id}`}
+>
+    <!-- Shared Hero Section -->
+    <DetailHero content={content?.hero} />
+
+    <!-- Detail Component -->
+    <Component content={content} />
+</SiteLayout>

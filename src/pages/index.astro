@@ -1,36 +1,23 @@
----
-import SiteLayout from "../components/layout/SiteLayout.astro";
-import AboutUs from "../components/sections/AboutUs.astro";
-import Hero from "../components/sections/Hero.astro";
-import LifeGroups from "../components/sections/LifeGroups.astro";
-import MissionStats from "../components/sections/MissionStats.astro";
-import WeeklyGatherings from "../components/sections/WeeklyGatherings.astro";
-import {
-  aboutSection,
-  footerLinks,
-  heroContent,
-  lifeGroups,
-  missionStats,
-  siteMeta,
-  weeklyGatherings,
-} from "../content/home";
-import { languageOptions, navLinks, socialLinks } from "../content/navigation";
----
-
-<SiteLayout
-  title={siteMeta.title}
-  description={siteMeta.description}
-  canonical={siteMeta.canonical}
-  ogImage={siteMeta.ogImage}
-  navLinks={navLinks}
-  footerLinks={footerLinks}
-  socials={socialLinks}
-  languages={languageOptions}
-  activeHref="/"
->
-  <Hero content={heroContent} />
-  <WeeklyGatherings content={weeklyGatherings} />
-  <AboutUs content={aboutSection} />
-  <LifeGroups content={lifeGroups} />
-  <MissionStats content={missionStats} />
-</SiteLayout>
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Redirecting | Every Nation Vietnam</title>
+        <meta http-equiv="refresh" content="0;url=/en/" />
+        <script>
+            const userLang = navigator.language || navigator.userLanguage;
+            if (userLang.startsWith("vi")) {
+                window.location.href = "/vi/";
+            } else {
+                window.location.href = "/en/";
+            }
+        </script>
+    </head>
+    <body>
+        <p>
+            If you are not redirected automatically, please <a href="/en/"
+                >click here</a
+            >.
+        </p>
+    </body>
+</html>

@@ -1,0 +1,32 @@
+---
+import SiteLayout from "../../components/layout/SiteLayout.astro";
+import { siteMeta, footerLinks } from "../../content/home";
+import {
+    navLinks,
+    socialLinks,
+    languageOptions,
+} from "../../content/navigation";
+import DetailHero from "../../components/sections/about/DetailHero.astro";
+import Giving from "../../components/sections/giving/Giving.astro";
+import { givingContent } from "../../content/giving";
+import { getLangFromUrl } from "../../utils/i18n";
+
+const lang = getLangFromUrl(Astro.url);
+const meta = siteMeta[lang];
+const content = givingContent[lang];
+---
+
+<SiteLayout
+    title={`Giving - ${meta.title}`}
+    description="Giving to Every Nation Vietnam"
+    navLinks={navLinks[lang]}
+    footerLinks={footerLinks[lang]}
+    socials={socialLinks}
+    languages={languageOptions}
+    activeHref={`/${lang}/giving`}
+>
+    <main>
+        <DetailHero content={content.hero} />
+        <Giving content={content} />
+    </main>
+</SiteLayout>

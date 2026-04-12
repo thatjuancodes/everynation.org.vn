@@ -10,7 +10,7 @@ const { content } = Astro.props;
 ---
 
 <section
-    class="relative h-[200px] w-full overflow-hidden sm:h-[200px] lg:h-[200px]"
+    class="relative h-[100px] w-full overflow-hidden sm:h-[160px] lg:h-[200px]"
 >
     <div class="absolute inset-0">
         <img
@@ -27,11 +27,10 @@ const { content } = Astro.props;
     <div class="layout-shell relative grid h-full place-items-center">
         <div class="text-center">
             <h1
-                class="text-center text-[38px] font-bold text-white sm:text-[46px] lg:text-[50px]"
+                class="text-center text-[30px] font-bold text-white sm:text-[40px] lg:text-[50px]"
                 style="font-family: 'Inter', sans-serif;"
-            >
-                {content?.title}
-            </h1>
+                set:html={content?.title}
+            />
         </div>
     </div>
 </section>
