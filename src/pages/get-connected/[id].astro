@@ -1,0 +1,11 @@
+---
+export function getStaticPaths() {
+    return [
+        { params: { id: "join-life-group" } },
+        { params: { id: "prayer-request" } },
+    ];
+}
+
+const { id } = Astro.params;
+return Astro.redirect(`/en/get-connected/${id}`);
+---

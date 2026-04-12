@@ -1,0 +1,12 @@
+---
+export function getStaticPaths() {
+    return [
+        { params: { id: "mission" } },
+        { params: { id: "values" } },
+        { params: { id: "faith" } },
+    ];
+}
+
+const { id } = Astro.params;
+return Astro.redirect(`/en/about/${id}`);
+---
