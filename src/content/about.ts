@@ -33,7 +33,7 @@ export const aboutPageContent = {
         },
         mission: {
             title: 'SỨ MỆNH',
-            body: 'Chúng tôi tồn tại để tôn vinh Chúa bằng cách <br class="block md:hidden" />thiết lập những hội thánh, <br class="block md:hidden" />những nhóm sinh viên đặt Chúa Giê-su <br class="block md:hidden" />làm trọng tâm, đầy dẫy quyền năng <br class="block md:hidden" />Đức Thánh Linh và có trách nhiệm <br class="block md:hidden" />với xã hội ở mọi quốc gia.',
+            body: 'Chúng tôi tồn tại để tôn vinh Chúa bằng cách <br class="block md:hidden" />thiết lập những Hội thánh và mục vụ sinh viên, <br class="block md:hidden" />đặt Chúa Giê-su làm trọng tâm, <br class="block md:hidden" />được trao quyền bởi Đức Thánh Linh <br class="block md:hidden" />và có trách nhiệm với xã hội ở mọi quốc gia.',
             ctaLabel: 'Xem thêm thông tin >',
             ctaLink: '/vi/about/mission',
             image: '/images/about-us-rectangle-17.png',

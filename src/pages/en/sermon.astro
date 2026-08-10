@@ -13,8 +13,7 @@ import { sermonContent } from "../../content/sermon";
 import { getLangFromUrl } from "../../utils/i18n";
 
 const lang = getLangFromUrl(Astro.url);
-const meta = siteMeta[lang];
-const content = sermonContent[lang];
+return Astro.redirect("/en");
 ---
 
 <SiteLayout

@@ -23,7 +23,7 @@ export const weeklyGatherings = {
       { label: 'International Service', time: 'Sunday 9am' },
       { label: 'Vietnamese Service', time: 'Sunday 11am' },
     ],
-    location: 'No 12, 1008 Street, Thanh My Loi Ward',
+    location: 'Số 12 Đường 100B-TML, Phường Cát Lái',
     ctaLabel: 'Get Connected',
   },
   vi: {
@@ -34,7 +34,7 @@ export const weeklyGatherings = {
       { label: 'Buổi thờ phượng quốc tế', time: 'Chủ Nhật 9 giờ sáng' },
       { label: 'Buổi thờ phượng Việt Nam', time: 'Chủ Nhật 11 giờ sáng' },
     ],
-    location: 'Số 12, Đường 1008, Phường Thạnh Mỹ Lợi',
+    location: 'Số 12 Đường 100B-TML, Phường Cát Lái',
     ctaLabel: 'Kết nối',
   },
 };
@@ -43,12 +43,12 @@ export const aboutSection = {
   image: '/images/map.jpg',
   en: {
     title: 'About Us',
-    body: 'We exist to honor God by\nestablishing Christ-centered,\nSpirit-empowered, socially\nresponsible churches and campus\nministries in every nation',
+    body: 'We exist to honor God by\nestablishing Christ-centered,\nSpirit-empowered, socially\nresponsible churches and campus\nministries in every nation.',
     ctaLabel: 'See More',
   },
   vi: {
     title: 'Về Chúng Tôi',
-    body: 'Chúng tôi tồn tại để tôn vinh Chúa bằng cách\nthiết lập những hội thánh, những nhóm sinh viên\nđặt Chúa Giê-su làm trọng tâm,\nđầy dẫy quyền năng Đức Thánh Linh\nvà có trách nhiệm với xã hội ở mọi quốc gia.',
+    body: 'Chúng tôi tồn tại để tôn vinh Chúa bằng cách\nthiết lập những Hội thánh và mục vụ sinh viên,\nđặt Chúa Giê-su làm trọng tâm,\nđược trao quyền bởi Đức Thánh Linh\nvà có trách nhiệm với xã hội ở mọi quốc gia.',
     ctaLabel: 'Xem thêm',
   },
 };
@@ -124,7 +124,7 @@ export const footerLinks = {
     { label: 'Our Mission', href: '/en/about/mission' },
     { label: 'Foundational Values', href: '/en/about/values' },
     { label: 'Statement Of Faith', href: '/en/about/faith' },
-    { label: 'Sermon', href: '/en/#sermons' },
+    // { label: 'Sermon', href: '/en/#sermons' },
   ],
   vi: [
     { label: 'Trang chủ', href: '/vi' },
@@ -132,7 +132,7 @@ export const footerLinks = {
     { label: 'Sứ mệnh', href: '/vi/about/mission' },
     { label: 'Giá trị nền tảng', href: '/vi/about/values' },
     { label: 'Chúng tôi tin rằng', href: '/vi/about/faith' },
-    { label: 'Bài giảng', href: '/vi/#sermons' },
+    // { label: 'Bài giảng', href: '/vi/#sermons' },
   ],
 };
 
