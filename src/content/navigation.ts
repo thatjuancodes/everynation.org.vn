@@ -33,7 +33,7 @@ export const navLinks: Record<string, NavLink[]> = {
       ],
     },
     { label: 'Giving', href: '/en/giving' },
-    { label: 'Sermon', href: '/en/sermon' },
+    // { label: 'Sermon', href: '/en/sermon' },
   ],
   vi: [
     { label: 'Trang chủ', href: '/vi' },
@@ -57,7 +57,7 @@ export const navLinks: Record<string, NavLink[]> = {
       ],
     },
     { label: 'Dự phần dâng hiến', href: '/vi/giving' },
-    { label: 'Bài giảng', href: '/vi/sermon' },
+    // { label: 'Bài giảng', href: '/vi/sermon' },
   ]
 };
 
