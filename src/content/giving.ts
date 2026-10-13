@@ -3,7 +3,7 @@ export const givingContent = {
         hero: {
             title: "GIVING",
             image: "/images/about-us-rectangle-2.png",
-            video: "/videos/Giving.mp4",
+            video: "/videos/Give.mp4",
         },
         intro: {
             title: "GIVE ONLINE",
@@ -12,12 +12,12 @@ export const givingContent = {
         footerText: "Thank you for giving with us. God bless you as you give.",
         qrCodes: [
             {
-                image: "/images/frame-111-image-7.png",
+                image: "/images/QR__ACB.jpg",
                 alt: "QR Code 1",
                 title: "ONLINE BANKING",
             },
             {
-                image: "/images/frame-112-image-8.png",
+                image: "/images/QR__Momo.jpg",
                 alt: "QR Code 2",
                 title: "ONLINE MOMO",
             },
@@ -27,7 +27,7 @@ export const givingContent = {
         hero: {
             title: "DỰ PHẦN <br class=\"block md:hidden\" />DÂNG HIẾN",
             image: "/images/about-us-rectangle-2.png",
-            video: "/videos/Giving.mp4",
+            video: "/videos/Give.mp4",
         },
         intro: {
             title: "DÂNG HIẾN TRỰC TUYẾN",
@@ -36,12 +36,12 @@ export const givingContent = {
         footerText: "Cảm ơn bạn đã dự phần dâng hiến cùng chúng tôi. Chúa ban phước cho bạn.",
         qrCodes: [
             {
-                image: "/images/frame-111-image-7.png",
+                image: "/images/QR__ACB.jpg",
                 alt: "QR Code 1",
                 title: "CHUYỂN KHOẢN NGÂN HÀNG",
             },
             {
-                image: "/images/frame-112-image-8.png",
+                image: "/images/QR__Momo.jpg",
                 alt: "QR Code 2",
                 title: "CHUYỂN KHOẢN MOMO",
             },

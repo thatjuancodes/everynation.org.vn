@@ -43,6 +43,7 @@ const {
               <a
                 href={getTranslatedPath(Astro.url.pathname, lang.code)}
                 class="flex items-center justify-center"
+                data-lang-switch
               >
                 <img
                   src={flagSrc}
@@ -193,6 +194,7 @@ const {
                   href={getTranslatedPath(Astro.url.pathname, lang.code)}
                   class="flex items-center gap-1 rounded-full p-1 transition hover:bg-white"
                   aria-label={`Switch to ${lang.label}`}
+                  data-lang-switch
                 >
                   <img
                     src={flagSrc}

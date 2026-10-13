@@ -4,6 +4,7 @@ import AboutUs from "../../components/sections/AboutUs.astro";
 import Hero from "../../components/sections/Hero.astro";
 import LifeGroups from "../../components/sections/LifeGroups.astro";
 import MissionStats from "../../components/sections/MissionStats.astro";
+import TellOne from "../../components/sections/TellOne.astro";
 import WeeklyGatherings from "../../components/sections/WeeklyGatherings.astro";
 import {
   aboutSection,
@@ -41,4 +42,5 @@ const meta = siteMeta[lang];
   <AboutUs content={aboutSection[lang]} />
   <LifeGroups content={lifeGroups[lang]} />
   <MissionStats content={missionStats[lang]} />
+  <TellOne />
 </SiteLayout>

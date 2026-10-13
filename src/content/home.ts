@@ -1,6 +1,6 @@
 export const siteMeta = {
   canonical: 'https://everynationvietnam.org.vn',
-  ogImage: '/images/hero-crowd.jpg',
+  ogImage: '/images/logo-removebg-preview.png',
   en: {
     title: 'Every Nation Vietnam | Honor God. Make Disciples.',
     description:
