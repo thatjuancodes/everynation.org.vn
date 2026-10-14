@@ -1,8 +1,8 @@
 ---
-import Footer from './Footer.astro';
-import Header from './Header.astro';
-import '../../styles/global.css';
-import type { NavLink } from '../../content/navigation';
+import Footer from "./Footer.astro";
+import Header from "./Header.astro";
+import "../../styles/global.css";
+import type { NavLink } from "../../content/navigation";
 
 interface Props {
   title: string;
@@ -11,7 +11,7 @@ interface Props {
   ogImage?: string;
   navLinks: NavLink[];
   footerLinks: NavLink[];
-  socials: { label: string; href: string; icon: 'facebook' | 'youtube' }[];
+  socials: { label: string; href: string; icon: "facebook" | "youtube" }[];
   languages: { code: string; label: string }[];
   logoHref?: string;
   cta?: { label: string; href: string } | null;
@@ -22,14 +22,14 @@ const {
   title,
   description,
   canonical,
-  ogImage = '/images/hero-crowd.jpg',
+  ogImage = "/images/logo-removebg-preview.png",
   navLinks,
   footerLinks,
   socials,
   languages,
-  logoHref = '/',
+  logoHref = "/",
   cta = null,
-  activeHref = '/',
+  activeHref = "/",
 } = Astro.props;
 ---
 
@@ -37,7 +37,9 @@ const {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <link rel="icon" type="image/png" href="/images/logo-removebg-preview.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/images/logo-removebg-preview.png" />
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <title>{title}</title>
@@ -50,9 +52,106 @@ const {
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+
+    <!-- Language Switch Scroll Position Preservation -->
+    <script is:inline>
+      (function() {
+        var STORAGE_KEY = 'en_lang_scroll_state';
+
+        // 1. Restore scroll position on page load
+        try {
+          var raw = sessionStorage.getItem(STORAGE_KEY);
+          if (raw) {
+            sessionStorage.removeItem(STORAGE_KEY);
+            var state = JSON.parse(raw);
+            if (state && (Date.now() - state.timestamp < 15000)) {
+              if ('scrollRestoration' in history) {
+                history.scrollRestoration = 'manual';
+              }
+              document.documentElement.style.scrollBehavior = 'auto';
+
+              var userInteracted = false;
+              var markInteracted = function() { userInteracted = true; };
+              window.addEventListener('wheel', markInteracted, { passive: true, once: true });
+              window.addEventListener('touchstart', markInteracted, { passive: true, once: true });
+              window.addEventListener('keydown', markInteracted, { passive: true, once: true });
+
+              var applyScroll = function() {
+                if (userInteracted) return;
+                if (state.sectionId) {
+                  var el = document.getElementById(state.sectionId);
+                  if (el) {
+                    var currentTop = el.getBoundingClientRect().top;
+                    var diff = currentTop - state.sectionTop;
+                    window.scrollBy({ top: diff, behavior: 'instant' });
+                    return;
+                  }
+                }
+                if (state.y > 0) {
+                  window.scrollTo({ top: state.y, behavior: 'instant' });
+                }
+              };
+
+              applyScroll();
+
+              document.addEventListener('DOMContentLoaded', function() {
+                applyScroll();
+                setTimeout(function() {
+                  applyScroll();
+                  document.documentElement.style.scrollBehavior = '';
+                }, 100);
+              });
+
+              window.addEventListener('load', function() {
+                applyScroll();
+                document.documentElement.style.scrollBehavior = '';
+              });
+            }
+          }
+        } catch (e) {}
+
+        // 2. Save scroll position on clicking any language switch link
+        document.addEventListener('click', function(e) {
+          var langLink = e.target.closest('[data-lang-switch]');
+          if (!langLink) return;
+
+          try {
+            var sections = document.querySelectorAll('section[id], [id]');
+            var bestSection = null;
+            var bestTop = 0;
+
+            for (var i = 0; i < sections.length; i++) {
+              var el = sections[i];
+              if (!el.id) continue;
+              var rect = el.getBoundingClientRect();
+              if (rect.top <= window.innerHeight * 0.45 && rect.bottom >= 60) {
+                bestSection = el.id;
+                bestTop = rect.top;
+                break;
+              }
+            }
+
+            var scrollState = {
+              y: window.scrollY || window.pageYOffset || 0,
+              sectionId: bestSection,
+              sectionTop: bestTop,
+              timestamp: Date.now()
+            };
+
+            sessionStorage.setItem(STORAGE_KEY, JSON.stringify(scrollState));
+          } catch (e) {}
+        }, true);
+      })();
+    </script>
   </head>
   <body class="bg-slate-50 text-slate-900">
-    <Header links={navLinks} languages={languages} logoHref={logoHref} cta={cta} activeHref={activeHref} />
+    <Header
+      links={navLinks}
+      languages={languages}
+      logoHref={logoHref}
+      cta={cta}
+      activeHref={activeHref}
+    />
     <main>
       <slot />
     </main>
