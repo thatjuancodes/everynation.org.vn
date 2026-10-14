@@ -1,0 +1,203 @@
+---
+---
+
+<section
+  id="banner-slider"
+  class="bg-white py-6 lg:py-12 relative overflow-x-clip"
+>
+  <!-- Background Texture -->
+  <div
+    class="absolute inset-0 opacity-15 bg-[url('/images/group-8-texture-2-gray-1.png')] bg-cover bg-center mix-blend-overlay pointer-events-none"
+  >
+  </div>
+
+  <div class="layout-shell relative z-10" id="bannerSliderRoot">
+    <!-- Banner Container: relative so buttons can be positioned outside -->
+    <div class="relative w-full">
+
+      <!-- Prev Button: outside on desktop (xl), inside edge on tablet/mobile so not cut off -->
+      <button
+        id="bannerPrev"
+        aria-label="Previous banner"
+        class="absolute top-1/2 -translate-y-1/2 left-2 sm:left-3 md:left-4 xl:-left-14 z-20 flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 !w-8 !h-8 sm:!w-9 sm:!h-9 md:!w-10 md:!h-10 !min-w-0 !p-0 aspect-square rounded-lg bg-[#0099FF] hover:bg-[#007acc] text-white shadow-md transition-all duration-200 hover:scale-110 active:scale-95 focus:outline-none"
+        style="min-width: unset; padding: 0;"
+      >
+        <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7.5 2L3.5 6L7.5 10" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <!-- Track wrapper: 100% full width of layout-shell (aligns with all sections above!) -->
+      <div class="w-full overflow-hidden rounded-[18px] md:rounded-[24px] lg:rounded-[24px]">
+        <div
+          id="bannerTrack"
+          class="flex transition-transform duration-500 ease-in-out"
+          style="will-change: transform;"
+        >
+          <!-- Slide 1 — Mission 2029 -->
+          <div class="min-w-full">
+            <!-- Mobile only (< 640px) -->
+            <div
+              class="sm:hidden relative overflow-hidden border border-white/20 bg-[#0099FF] shadow-[0_12px_28px_rgba(0,0,0,0.10)] w-full aspect-[16/9] flex items-center justify-center p-4"
+            >
+              <img
+                src="/images/figma-14-3169.png"
+                alt=""
+                class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-multiply pointer-events-none"
+              />
+              <div class="relative z-10 w-full flex flex-col items-center justify-center text-center">
+                <span class="text-white text-xs font-bold tracking-wider uppercase mb-1 drop-shadow">SỨ MỆNH 2029</span>
+                <a
+                  href="https://www.everynation.org/mission2029/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:scale-105 transition-transform cursor-pointer relative z-30 flex flex-col items-center w-full max-w-[240px]"
+                >
+                  <img
+                    src="/images/missionMoblie.png"
+                    alt="Mission 2029"
+                    class="w-full h-auto object-contain mx-auto drop-shadow-lg"
+                  />
+                </a>
+              </div>
+            </div>
+
+            <!-- Tablet & Desktop (>= 640px) -->
+            <div class="hidden sm:block w-full relative overflow-hidden shadow-[0_12px_28px_rgba(0,0,0,0.10)] border border-[#e5e5e5]">
+              <a
+                href="https://www.everynation.org/mission2029/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block w-full hover:scale-[1.01] transition-transform duration-300 relative z-20"
+              >
+                <img
+                  src="/images/QR_Mission 2029 banner.jpg"
+                  alt="Mission 2029"
+                  class="w-full h-auto object-cover block"
+                />
+              </a>
+            </div>
+          </div>
+
+          <!-- Slide 2 — Tell One -->
+          <div class="min-w-full">
+            <!-- Mobile only (< 640px) -->
+            <div
+              class="sm:hidden relative overflow-hidden border border-[#e5e5e5] shadow-[0_12px_28px_rgba(0,0,0,0.10)] w-full aspect-[16/9] flex items-center justify-center bg-black"
+            >
+              <img
+                src="/images/tell-one-mobile.jpg"
+                alt="Tell One - Làm chứng cho một người"
+                class="w-full h-full object-cover block"
+                loading="lazy"
+              />
+            </div>
+
+            <!-- Tablet & Desktop (>= 640px) -->
+            <div class="hidden sm:block w-full relative overflow-hidden shadow-[0_12px_28px_rgba(0,0,0,0.10)] border border-[#e5e5e5]">
+              <img
+                src="/images/QR_TELL ONE.jpg"
+                alt="Tell One - Làm chứng cho một người"
+                class="w-full h-auto object-cover block hover:scale-[1.01] transition-transform duration-300"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Next Button: outside on desktop (xl), inside edge on tablet/mobile so not cut off -->
+      <button
+        id="bannerNext"
+        aria-label="Next banner"
+        class="absolute top-1/2 -translate-y-1/2 right-2 sm:right-3 md:right-4 xl:-right-14 z-20 flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 !w-8 !h-8 sm:!w-9 sm:!h-9 md:!w-10 md:!h-10 !min-w-0 !p-0 aspect-square rounded-lg bg-[#0099FF] hover:bg-[#007acc] text-white shadow-md transition-all duration-200 hover:scale-110 active:scale-95 focus:outline-none"
+        style="min-width: unset; padding: 0;"
+      >
+        <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4.5 2L8.5 6L4.5 10" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Dot Indicators: below banner, centered -->
+    <div class="flex justify-center items-center gap-1.5 mt-3">
+      <button
+        id="bannerDot0"
+        aria-label="Go to slide 1"
+        class="h-1.5 w-6 rounded-full bg-[#0099FF] transition-all duration-300 !min-w-0 !p-0"
+        style="min-width: unset; padding: 0;"
+      ></button>
+      <button
+        id="bannerDot1"
+        aria-label="Go to slide 2"
+        class="h-1.5 w-2 rounded-full bg-[#0099FF]/25 hover:bg-[#0099FF]/50 transition-all duration-300 !min-w-0 !p-0"
+        style="min-width: unset; padding: 0;"
+      ></button>
+    </div>
+  </div>
+</section>
+
+
+<script>
+  (function () {
+    const TOTAL = 2;
+    const AUTO_INTERVAL = 5000;
+
+    const track = document.getElementById("bannerTrack") as HTMLElement | null;
+    const prevBtn = document.getElementById("bannerPrev") as HTMLButtonElement | null;
+    const nextBtn = document.getElementById("bannerNext") as HTMLButtonElement | null;
+    const dots = [
+      document.getElementById("bannerDot0") as HTMLButtonElement | null,
+      document.getElementById("bannerDot1") as HTMLButtonElement | null,
+    ];
+
+    if (!track || !prevBtn || !nextBtn) return;
+
+    let current = 0;
+    let timer: ReturnType<typeof setInterval>;
+
+    function goTo(index: number) {
+      current = (index + TOTAL) % TOTAL;
+      track!.style.transform = `translateX(-${current * 100}%)`;
+      dots.forEach((dot, i) => {
+        if (!dot) return;
+        if (i === current) {
+          dot.classList.remove("w-2", "bg-[#0099FF]/25", "hover:bg-[#0099FF]/50");
+          dot.classList.add("w-6", "bg-[#0099FF]");
+        } else {
+          dot.classList.remove("w-6", "bg-[#0099FF]");
+          dot.classList.add("w-2", "bg-[#0099FF]/25", "hover:bg-[#0099FF]/50");
+        }
+      });
+    }
+
+    function startAuto() {
+      clearInterval(timer);
+      timer = setInterval(() => goTo(current + 1), AUTO_INTERVAL);
+    }
+
+    function resetAuto() {
+      startAuto();
+    }
+
+    prevBtn.addEventListener("click", () => { goTo(current - 1); resetAuto(); });
+    nextBtn.addEventListener("click", () => { goTo(current + 1); resetAuto(); });
+    dots.forEach((dot, i) => dot?.addEventListener("click", () => { goTo(i); resetAuto(); }));
+
+    // Touch / swipe support
+    let touchStartX = 0;
+    track.addEventListener("touchstart", (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener("touchend", (e) => {
+      const delta = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(delta) > 40) { goTo(current + (delta > 0 ? 1 : -1)); resetAuto(); }
+    }, { passive: true });
+
+    // Pause on hover
+    const root = document.getElementById("bannerSliderRoot");
+    root?.addEventListener("mouseenter", () => clearInterval(timer));
+    root?.addEventListener("mouseleave", startAuto);
+
+    goTo(0);
+    startAuto();
+  })();
+</script>

@@ -35,7 +35,7 @@ a {
   @apply text-inherit no-underline;
 }
 
-button,
+.button,
 a.button {
   min-width: 243px;
   padding: 12px 18px;
